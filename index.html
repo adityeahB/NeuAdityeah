@@ -17,8 +17,8 @@
             --glass: rgba(255, 255, 255, 0.04);
             --border: rgba(255, 255, 255, 0.12);
             --float-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            /* STEM/Art Interaction Background Overlay */
-            --stem-art: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1920&q=80');
+            /* Global Digital Mind Background */
+            --stem-art: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1920&q=80');
         }
 
         [data-theme="light"] {
@@ -46,27 +46,32 @@
         /* --- SECTIONS --- */
         section { padding: 120px 40px; border-bottom: 1px solid var(--border); }
 
-        /* --- LANDING PAGE: REDESIGNED --- */
+        /* --- LANDING PAGE --- */
         header { 
             height: 100vh; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
             position: relative;
-            background-image: linear-gradient(rgba(26, 22, 20, 0.85), rgba(26, 22, 20, 0.85)), var(--stem-art);
+            /* Darker overlay to ensure text pops against complex background */
+            background-image: linear-gradient(rgba(26, 22, 20, 0.9), rgba(26, 22, 20, 0.8)), var(--stem-art);
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            padding: 0 20px; /* Ensure padding on sides so text doesn't hit edge */
         }
         
-        /* Main Catchphrase Headline */
+        /* Main Catchphrase Headline - Forced Single Line */
         h1 { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(2rem, 6vw, 4.5rem); 
+            /* Scaled down font size to ensure it fits on one line across devices */
+            font-size: clamp(1.2rem, 3.5vw, 3rem); 
             line-height: 1.1; 
             margin: 0; 
             font-weight: 900;
-            max-width: 900px;
             text-transform: none;
             letter-spacing: -1px;
+            /* Critical for single line requirement */
+            white-space: nowrap;
+            width: 100%;
         }
         
         /* Name Sub-headline */
@@ -118,7 +123,7 @@
 
         footer { padding: 120px 40px; background: var(--accent); color: #000; position: relative; overflow: hidden; }
         .footer-bg-text { position: absolute; font-size: 20rem; font-weight: 900; opacity: 0.05; bottom: -50px; left: -20px; white-space: nowrap; pointer-events: none; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; justify-content: center; }
         .footer-logo { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 0.9; font-weight: 900; letter-spacing: -2px; }
         .contact-pill { display: inline-block; padding: 15px 30px; border: 2px solid #000; border-radius: 50px; text-decoration: none; color: #000; font-weight: 800; margin-top: 20px; }
         .legal-block { font-family: 'Space Mono', monospace; font-size: 0.65rem; line-height: 1.6; opacity: 0.8; }
@@ -148,7 +153,7 @@
 </div>
 
 <header id="home">
-    <h1>Creative instincts, STEM brain, global firmware.</h1>
+    <h1>Creative instincts | STEM brain | global firmware.</h1>
     <div class="header-name">Aditya Neil Banerjee</div>
     <div class="header-tag">Class of 2027 | v3.1 | adaptive</div>
 </header>
