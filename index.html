@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Neil Banerjee | Portfolio</title>
+    <title>Aditya Neil Banerjee | Creator</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Dark Mode (Default) */
-            --bg: #111213;
+            /* Dark Mode */
+            --bg: #0f1011;
             --text: #e9edc9;
             --accent: #d4a373;
             --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.1);
-            --shadow: rgba(0, 0, 0, 0.5);
         }
 
         [data-theme="light"] {
-            --bg: #f4f4f2;
+            /* Light Mode */
+            --bg: #fcfcf9;
             --text: #1a1c1d;
             --accent: #bc6c25;
             --glass: rgba(0, 0, 0, 0.02);
             --border: rgba(0, 0, 0, 0.08);
-            --shadow: rgba(0, 0, 0, 0.1);
         }
 
-        * { box-sizing: border-box; transition: background 0.5s ease, color 0.5s ease, transform 0.3s ease; }
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
 
         body {
             background-color: var(--bg);
@@ -36,7 +36,7 @@
             overflow-x: hidden;
         }
 
-        /* --- THEME TOGGLE --- */
+        /* --- THEME TOGGLE ICON --- */
         .theme-toggle {
             position: fixed;
             top: 30px; left: 30px;
@@ -44,11 +44,9 @@
             cursor: pointer;
             background: var(--glass);
             border: 1px solid var(--border);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 0.7rem;
-            text-transform: uppercase;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
             backdrop-filter: blur(10px);
             color: var(--text);
         }
@@ -56,42 +54,40 @@
         /* --- HEADER --- */
         header {
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             text-align: center;
-            padding: 20px;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 15vw, 9rem);
-            line-height: 0.85;
-            margin: 0;
+            font-size: clamp(3.5rem, 18vw, 10rem);
+            line-height: 0.8; margin: 0;
+            letter-spacing: -4px;
         }
 
-        .links { margin-top: 40px; display: flex; gap: 15px; }
+        .links { margin-top: 50px; display: flex; gap: 20px; }
         .links a {
-            text-decoration: none; color: var(--accent);
-            font-weight: 700; font-size: 0.8rem;
-            padding: 12px 25px; border: 1px solid var(--accent);
-            border-radius: 50px; text-transform: uppercase;
+            text-decoration: none; color: var(--text);
+            font-weight: 700; font-size: 0.7rem;
+            padding: 15px 30px; border: 1px solid var(--border);
+            border-radius: 50px; text-transform: uppercase; letter-spacing: 2px;
         }
+        .links a:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* --- LAYOUT --- */
+        /* --- GRID SYSTEM --- */
         .section-header {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem; text-align: center; margin: 120px 0 60px;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            text-align: center; margin: 150px 0 60px;
         }
 
         .grid {
             max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px; padding: 0 40px;
         }
 
-        /* FLOATING BLOCKS */
         .card {
             background: var(--glass);
             border: 1px solid var(--border);
@@ -99,47 +95,166 @@
             padding: 20px;
             cursor: pointer;
             backdrop-filter: blur(15px);
-            box-shadow: 0 20px 50px var(--shadow);
         }
-
         .card:hover { transform: translateY(-15px); border-color: var(--accent); }
-
         .card img {
-            width: 100%; height: 450px;
+            width: 100%; height: 400px;
             object-fit: cover; border-radius: 30px;
             margin-bottom: 20px;
         }
-
         .card-meta { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; }
         .card-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 10px 0; }
 
-        /* --- MUSINGS (Seth Godin Style) --- */
-        .musings-container { max-width: 800px; margin: 0 auto; padding: 20px; }
-        .musing-item {
-            border-bottom: 1px solid var(--border);
-            padding: 40px 0;
-        }
-        .musing-item h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 10px; }
+        /* --- MUSINGS --- */
+        .musings-container { max-width: 700px; margin: 0 auto; padding: 0 20px; }
+        .musing-item { border-bottom: 1px solid var(--border); padding: 40px 0; }
+        .musing-item h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 15px; }
         .musing-item p { font-size: 1.1rem; line-height: 1.7; opacity: 0.8; }
 
-        /* --- MODAL POP-OUT --- */
+        /* --- FOOTER & GDPR --- */
+        footer {
+            margin-top: 150px; padding: 100px 20px;
+            border-top: 1px solid var(--border);
+            text-align: center; font-size: 0.8rem; opacity: 0.7;
+        }
+        .contact-info { font-weight: 800; margin-bottom: 20px; font-size: 1rem; }
+        .class-tag { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-top: 40px; color: var(--accent); }
+        
+        .mandela-quote {
+            max-width: 650px; margin: 60px auto 0;
+            font-family: 'Playfair Display', serif;
+            font-style: italic; font-size: 1.8rem; line-height: 1.4;
+        }
+
+        /* --- MODAL --- */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg); z-index: 10001; padding: 60px; overflow-y: auto;
+            background: var(--bg); z-index: 10001; padding: 80px 40px; overflow-y: auto;
         }
         .modal-content { max-width: 800px; margin: 0 auto; }
         .modal-content h2 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--accent); }
-        .close-modal { position: fixed; top: 40px; right: 50px; cursor: pointer; font-weight: 800; color: var(--accent); }
+        .modal-content p { font-size: 1.4rem; line-height: 1.8; font-weight: 300; }
+        .close-modal { position: fixed; top: 40px; right: 50px; cursor: pointer; font-size: 1.5rem; font-weight: 900; }
 
     </style>
 </head>
 <body>
 
-<button class="theme-toggle" onclick="toggleTheme()">Switch Appearance</button>
+<div class="theme-toggle" onclick="toggleTheme()">
+    <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</div>
 
 <header>
     <h1>ADITYA<br>NEIL<br>BANERJEE</h1>
     <div class="links">
         <a href="https://www.linkedin.com/in/adityanbanerjee/" target="_blank">LinkedIn</a>
-        <a href="https://aditya.pt/#" target="_blank">The Original Archive</a>
+        <a href="mailto:me@aditya.pt">Direct Contact</a>
     </div>
+</header>
+
+<div class="section-header">Cultures</div>
+<div class="grid">
+    <div class="card" onclick="openPop('India', 'Heritage is a funny thing. Being born in India and moving at only a few months old means I carry the roots without the soil. It’s a culture of vivid noise, ancient wisdom, and the realization that no matter where I go, my grandmother will still somehow know if I haven’t eaten enough lentils today.')">
+        <img src="https://images.unsplash.com/photo-1524492717970-354794142764?auto=format&fit=crop&w=800" alt="India">
+        <div class="card-meta">The Roots</div>
+        <div class="card-title">India</div>
+    </div>
+    <div class="card" onclick="openPop('Brazil', 'My childhood was soundtracked by Portuguese with a Brazilian lilt and the smell of Feijoada. In Brazil, I learned that time is a suggestion, a hug is a standard greeting, and that life is significantly better when lived with a bit of \'Ginga\'. It’s where I learned to speak, but more importantly, where I learned to feel.')">
+        <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800" alt="Brazil">
+        <div class="card-meta">The Spirit</div>
+        <div class="card-title">Brazil</div>
+    </div>
+    <div class="card" onclick="openPop('USA', 'I am perhaps the most connected person to a country I’ve never called home. Attending American schools my entire life created a strange cultural duality: I can analyze the US Constitution and quote 90s sitcoms with ease, yet I view the country through a telescope rather than a window. It’s an influence of ideals and academic rigor.')">
+        <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800" alt="USA">
+        <div class="card-meta">The Influence</div>
+        <div class="card-title">USA</div>
+    </div>
+    <div class="card" onclick="openPop('Portugal', 'Portugal is the stage for my young adulthood. It’s where I realized that cobblestones are the natural enemy of white sneakers and that \'desenrascar\'—the art of finding a solution out of nowhere—is a vital life skill. Moving here gave me an EU perspective and a deep appreciation for slow afternoons and grilled sardines.')">
+        <img src="https://images.unsplash.com/photo-1558102822-da570eb113ed?auto=format&fit=crop&w=800" alt="Portugal">
+        <div class="card-meta">The Home</div>
+        <div class="card-title">Portugal</div>
+    </div>
+</div>
+
+<div class="section-header">Writing</div>
+<div class="grid">
+    <div class="card" onclick="window.open('https://ohsobserver.com/overwhelmed/', '_blank')">
+        <img src="https://ohsobserver.com/wp-content/uploads/2025/05/overwhelmed.png" alt="Overwhelmed">
+        <div class="card-meta">Article</div>
+        <div class="card-title">Overwhelmed</div>
+    </div>
+    <div class="card" onclick="window.open('https://ohsobserver.com/rent-control-will-it-work/', '_blank')">
+        <img src="https://ohsobserver.com/wp-content/uploads/2026/01/rent.png" alt="Rent">
+        <div class="card-meta">Economy</div>
+        <div class="card-title">Rent Control</div>
+    </div>
+    <div class="card" onclick="window.open('https://ohsobserver.com/can-we-do-better-than-positive-masculinity/', '_blank')">
+        <img src="https://ohsobserver.com/wp-content/uploads/2025/12/men.png" alt="Men">
+        <div class="card-meta">Society</div>
+        <div class="card-title">Masculinity</div>
+    </div>
+    <div class="card" onclick="window.open('https://www.nytimes.com/2025/05/15/learning/how-to-be-a-stargazer.html', '_blank')">
+        <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=800" alt="Stars">
+        <div class="card-meta">NYT</div>
+        <div class="card-title">Stargazer</div>
+    </div>
+</div>
+
+<div class="section-header">Musings</div>
+<div class="musings-container">
+    <div class="musing-item">
+        <h3>On Observation</h3>
+        <p>I believe that the best writing comes from the quiet moments of looking. Whether it's the way a street in Lisbon smells after rain or the specific syntax of a local Brazilian dialect, the details matter.</p>
+    </div>
+</div>
+
+<footer>
+    <div class="contact-info">
+        Aditya Neil Banerjee • <a href="mailto:me@aditya.pt" style="color:var(--accent)">me@aditya.pt</a>
+    </div>
+    <p>© 2026 Aditya Neil Banerjee. All rights reserved.</p>
+    <p style="max-width:500px; margin: 10px auto;">Privacy Policy: This static portfolio does not collect cookies or track user data. Information is processed in compliance with EU GDPR regulations.</p>
+    
+    <div class="class-tag">Class of 2027</div>
+
+    <div class="mandela-quote">
+        "There is no passion to be found playing small – in settling for a life that is less than the one you are capable of living."<br>
+        <span style="font-size: 1rem; opacity: 0.6; font-style: normal;">— Nelson Mandela</span>
+    </div>
+</footer>
+
+<div id="popout" class="modal">
+    <span class="close-modal" onclick="closePop()">CLOSE ✕</span>
+    <div class="modal-content">
+        <h2 id="pTitle"></h2>
+        <p id="pBody"></p>
+    </div>
+</div>
+
+<script>
+    function toggleTheme() {
+        const doc = document.documentElement;
+        const icon = document.getElementById('theme-icon');
+        if (doc.getAttribute('data-theme') === 'dark') {
+            doc.setAttribute('data-theme', 'light');
+            icon.innerHTML = '<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707"></path><circle cx="12" cy="12" r="4"></circle>';
+        } else {
+            doc.setAttribute('data-theme', 'dark');
+            icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+        }
+    }
+
+    function openPop(title, body) {
+        document.getElementById('pTitle').innerText = title;
+        document.getElementById('pBody').innerText = body;
+        document.getElementById('popout').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePop() {
+        document.getElementById('popout').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+</script>
+
+</body>
+</html>
