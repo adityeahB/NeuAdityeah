@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya | Student & Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Lora:italic,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --accent: #000000;
+            --card-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            --radius: 30px;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY & HEADER --- */
+        header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: clamp(4rem, 15vw, 10rem);
+            margin: 0;
+            line-height: 0.8;
+            letter-spacing: -5px;
+        }
+
+        .subtitle {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        /* --- THE FLOATING GRID --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+        }
+
+        /* Round-edged floating blocks */
+        .block {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 15px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .block:hover {
+            transform: scale(1.03) translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        }
+
+        .block img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: calc(var(--radius) - 10px);
+            display: block;
+        }
+
+        .block-info {
+            padding: 25px 15px;
+        }
+
+        .block-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .block-title {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        /* --- POP-OUT MODAL --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 9999;
+            padding: 50px;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+
+        .modal-content h2 { font-size: 3rem; margin-bottom: 20px; }
+        .modal-content p { font-family: 'Lora', serif; font-size: 1.2rem; color: #333; }
+
+        .close-btn {
+            position: fixed;
+            top: 30px; right: 40px;
+            font-size: 2rem;
+            cursor: pointer;
+            font-weight: 900;
+        }
+
+        /* Section divider for "New Content" */
+        .admin-divider {
+            grid-column: 1 / -1;
+            border-top: 1px solid #eee;
+            margin: 100px 0 50px;
+            padding-top: 20px;
+            text-align: center;
+            font-style: italic;
+            color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ADITYA</h1>
+    <div class="subtitle">IB DP Candidate • Portfolio 2024-2026</div>
+</header>
+
+<div class="container">
+    
+    <div class="block" onclick="openText('About Me', 'I am an IB Diploma Program candidate at the International School of Sintra. This portfolio tracks my journey through CAS, academic projects, and personal growth. I believe in the power of visual storytelling and constant learning.')">
+        <img src="https://www.aditya.pt/wp-content/uploads/2021/01/cropped-WhatsApp-Image-2021-01-18-at-17.51.52.jpeg" alt="Aditya Portrait">
+        <div class="block-info">
+            <div class="block-category">The Profile</div>
+            <h2 class="block-title">The Journey</h2>
+        </div>
+    </div>
+
+    <div class="block" onclick="openText('CAS Reflections', 'My Creativity, Activity, and Service (CAS) journey includes experiences in basketball, digital design, and community volunteering. I focus on pushing beyond my comfort zone and developing new skills outside the classroom.')">
+        <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?q=80&w=1000&auto=format&fit=crop" alt="Creativity">
+        <div class="block-info">
+            <div class="block-category">Experience</div>
+            <h2 class="block-title">C.A.S. Projects</h2>
+        </div>
+    </div>
+
+    <div class="block" onclick="openText('Academic Research', 'Exploring complex themes in my Extended Essay and Theory of Knowledge (TOK). My academic work is centered on critical thinking and global perspectives.')">
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop" alt="Books">
+        <div class="block-info">
+            <div class="block-category">Academic</div>
+            <h2 class="block-title">EE & TOK</h2>
+        </div>
+    </div>
+
+    <div class="admin-divider">End of current content. Use the block below to add your next masterpiece.</div>
+
+    <div class="block" onclick="window.open('YOUR_FULL_IMAGE_URL_HERE', '_blank')">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop" alt="Add New">
+        <div class="block-info">
+            <div class="block-category">Placeholder</div>
+            <h2 class="block-title">Add Your Project Title Here</h2>
+            <p style="font-family: 'Lora'; font-size: 0.9rem;">Edit this in the code to add your own images and text.</p>
+        </div>
+    </div>
+
+</div>
+
+<div id="textModal" class="modal">
+    <span class="close-btn" onclick="closeModal()">CLOSE ✕</span>
+    <div class="modal-content">
+        <h2 id="modalTitle">Title</h2>
+        <p id="modalBody">Body text goes here...</p>
+    </div>
+</div>
+
+<script>
+    function openText(title, body) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalBody').innerText = body;
+        document.getElementById('textModal').style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Stop scrolling
+    }
+
+    function closeModal() {
+        document.getElementById('textModal').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Resume scrolling
+    }
+</script>
+
+</body>
+</html>
