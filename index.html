@@ -12,7 +12,7 @@
             --bg: #1a1614; 
             --text: #f5f1ed; 
             --accent: #d4a373; 
-            --neon: #ccff00; /* Neon Highlighter */
+            --neon: #ccff00; 
             --glass: rgba(255, 255, 255, 0.04);
             --border: rgba(255, 255, 255, 0.12);
             --float-shadow: 0 30px 60px rgba(0,0,0,0.5);
@@ -31,62 +31,42 @@
         * { box-sizing: border-box; transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
         body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
 
-        /* --- NAVIGATION --- */
         .hamburger { position: fixed; top: 30px; right: 30px; z-index: 10002; cursor: pointer; background: var(--glass); padding: 15px; border-radius: 50%; backdrop-filter: blur(10px); border: 1px solid var(--border); }
         .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 10001; display: none; flex-direction: column; justify-content: center; align-items: center; }
         .nav-overlay a { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--text); text-decoration: none; margin: 10px 0; }
         .nav-overlay a:hover { color: var(--accent); font-style: italic; }
 
-        /* --- THEME TOGGLE --- */
         .theme-toggle { position: fixed; top: 30px; left: 30px; z-index: 10000; cursor: pointer; background: var(--glass); border: 1px solid var(--border); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); color: var(--text); }
 
         section { padding: 120px 40px; border-bottom: 1px solid var(--border); }
 
-        /* --- HEADER --- */
         header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 15vw, 10rem); line-height: 0.8; margin: 0; letter-spacing: -4px; }
 
-        /* --- COUNTRIES --- */
         .countries-row { display: flex; gap: 30px; overflow-x: auto; padding: 40px 0; scrollbar-width: none; }
         .countries-row::-webkit-scrollbar { display: none; }
         .country-card { flex: 0 0 400px; background: var(--glass); border-radius: 40px; padding: 15px; border: 1px solid var(--border); cursor: pointer; position: relative; box-shadow: var(--float-shadow); }
         .country-card img { width: 100%; height: 500px; object-fit: cover; border-radius: 30px; }
         .country-card:hover { transform: translateY(-15px); }
 
-        /* --- THE BOOK --- */
-        .book-block { max-width: 1200px; margin: 0 auto; background: var(--accent); color: #000; border-radius: 50px; padding: 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; cursor: pointer; box-shadow: var(--float-shadow); }
+        /* --- THE BOOK SECTION --- */
+        .book-block { max-width: 1200px; margin: 0 auto; background: var(--accent); color: #000; border-radius: 50px; padding: 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; cursor: pointer; box-shadow: var(--float-shadow); }
         .book-block h2 { font-family: 'Playfair Display', serif; font-size: 4.5rem; margin: 0; line-height: 0.9; }
+        .book-cover-img { width: 100%; max-width: 350px; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); justify-self: center; }
 
-        /* --- WRITING & FLOATING PLACEHOLDERS --- */
         .nyt-neon { background: var(--neon); color: #000; padding: 4px 12px; display: inline-block; font-weight: 900; font-size: 0.9rem; margin-bottom: 15px; border-radius: 2px; transform: rotate(-1deg); }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
         
-        .card { 
-            background: var(--glass); 
-            border-radius: 40px; 
-            padding: 25px; 
-            border: 1px solid var(--border); 
-            cursor: pointer; 
-            position: relative; 
-            box-shadow: var(--float-shadow); /* This provides the "Floating" look */
-            transform: translateY(0);
-        }
-        .card:hover { 
-            transform: translateY(-20px); /* Lifts on hover */
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent);
-        }
+        .card { background: var(--glass); border-radius: 40px; padding: 25px; border: 1px solid var(--border); cursor: pointer; position: relative; box-shadow: var(--float-shadow); }
+        .card:hover { transform: translateY(-20px); background: rgba(255, 255, 255, 0.08); border-color: var(--accent); }
         .card img { width: 100%; height: 400px; object-fit: cover; border-radius: 30px; margin-bottom: 20px; }
 
-        /* --- MUSINGS --- */
         .musing-item { max-width: 800px; margin: 0 auto 100px; font-family: 'Space Mono', monospace; border-left: 4px solid var(--neon); padding-left: 40px; }
         .musing-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-top: 0; color: var(--accent); font-style: italic; }
 
-        /* --- SIGN OFF --- */
         .sign-off { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; }
         .sign-off blockquote { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); max-width: 1000px; font-style: italic; line-height: 1.2; }
 
-        /* --- FOOTER --- */
         footer { padding: 120px 40px; background: var(--accent); color: #000; position: relative; overflow: hidden; }
         .footer-bg-text { position: absolute; font-size: 20rem; font-weight: 900; opacity: 0.05; bottom: -50px; left: -20px; white-space: nowrap; pointer-events: none; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
@@ -94,10 +74,8 @@
         .contact-pill { display: inline-block; padding: 15px 30px; border: 2px solid #000; border-radius: 50px; text-decoration: none; color: #000; font-weight: 800; margin-top: 20px; }
         .legal-block { font-family: 'Space Mono', monospace; font-size: 0.65rem; line-height: 1.6; opacity: 0.8; }
 
-        /* --- LGPD BANNER --- */
-        #cookie-banner { position: fixed; bottom: 30px; left: 30px; right: 30px; background: #000; color: #fff; padding: 20px 40px; border-radius: 100px; z-index: 10005; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; border: 1px solid var(--neon); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        #cookie-banner { position: fixed; bottom: 30px; left: 30px; right: 30px; background: #000; color: #fff; padding: 20px 40px; border-radius: 100px; z-index: 10005; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; border: 1px solid var(--neon); }
 
-        /* --- MODAL --- */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 20000; padding: 80px 40px; overflow-y: auto; }
         .modal-content { max-width: 800px; margin: 0 auto; }
         .modal-content h2 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--accent); }
@@ -127,24 +105,23 @@
 
 <section id="cultures">
     <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 0;">Global Origins</h2>
-    <p style="opacity:0.5; margin-bottom:40px;">Slide across the blueprint →</p>
     <div class="countries-row">
-        <div class="country-card" onclick="openPop('India', 'Heritage is an internal compass. India is a lesson in resilience and the sheer power of human density. No system is too complex to be understood, provided you know where the pulse is.')">
+        <div class="country-card" onclick="openPop('India', 'India is a masterclass in organized chaos. A heritage that informs my perspective on community and the relentless pace of growth.')">
             <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=800&q=80" alt="India">
             <div class="card-meta">Legacy</div>
             <div class="card-title">India</div>
         </div>
-        <div class="country-card" onclick="openPop('Brazil', 'Brazil taught me about the conversation between light and concrete. A culture that treats design as a living social force. It’s where I learned to appreciate the curve over the straight line.')">
+        <div class="country-card" onclick="openPop('Brazil', 'Brazil taught me about the conversation between light and concrete. A culture that treats design as a living social force.')">
             <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80" alt="Brazil">
             <div class="card-meta">Rhythm</div>
             <div class="card-title">Brazil</div>
         </div>
-        <div class="country-card" onclick="openPop('USA', 'The United States is my intellectual training ground. My perspective is framed by the constant pursuit of the next big question. It is the language of analysis and the drive of the narrative.')">
-            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80" alt="USA">
+        <div class="country-card" onclick="openPop('USA', 'The United States is my intellectual training ground. The pursuit of the next big question through the language of analysis.')">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800" alt="USA">
             <div class="card-meta">Intellect</div>
             <div class="card-title">USA</div>
         </div>
-        <div class="country-card" onclick="openPop('Portugal', 'Portugal is the stage for my adulthood. Where traditional cobblestones meet the digital frontier. Here, I’ve learned to embrace the slow, deliberate pace of the Atlantic.')">
+        <div class="country-card" onclick="openPop('Portugal', 'Portugal is the stage for my adulthood. Where traditional cobblestones meet the digital frontier.')">
             <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=800" alt="Portugal">
             <div class="card-meta">Current</div>
             <div class="card-title">Portugal</div>
@@ -159,7 +136,7 @@
             <h2>THE WEIGHT OF A CLOUD</h2>
             <p style="font-size: 1.3rem; margin-top: 20px; line-height: 1.5;">My debut poetry collection. An exploration of home, identity, and the ephemeral moments in between.</p>
         </div>
-        <div style="font-size: 10rem; text-align: right;">☁️</div>
+        <img src="https://m.media-amazon.com/images/I/81LFuBnVh6L._SL1500_.jpg" class="book-cover-img" alt="The Weight of a Cloud Book Cover">
     </div>
 </section>
 
@@ -189,7 +166,7 @@
     <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 80px; text-align:center;">The Unscripted Lab</h2>
     <div class="musing-item">
         <h3>The AI-Leisure Trap</h3>
-        <p>In 2026, AI was meant to save us time. Instead, it’s just raised the ceiling for how much we’re expected to produce. We are in a race to the bottom of the attention span.</p>
+        <p>In 2026, AI was meant to save us time. Instead, it’s raised the ceiling for production. We are in a race to the bottom of the attention span.</p>
     </div>
     <div class="musing-item">
         <h3>Post-Global Identity</h3>
@@ -200,14 +177,14 @@
 <section id="interests">
     <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 60px;">Sound & Vision</h2>
     <div class="grid">
-        <div class="card">
+        <div class="card" onclick="window.open('https://open.spotify.com/playlist/7K3scENpOi7ZPZUHfnfic3?si=qH_vBuN8Q0qQQbx3ife_Jw', '_blank')">
             <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800" alt="Music">
-            <div class="card-meta">Interests</div>
+            <div class="card-meta">Spotify Curation</div>
             <div class="card-title">Soundscapes</div>
         </div>
-        <div class="card">
+        <div class="card" onclick="window.open('https://www.nga.gov/artwork-search?download=1', '_blank')">
             <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?auto=format&fit=crop&w=800" alt="Photography">
-            <div class="card-meta">Interests</div>
+            <div class="card-meta">NGA Archive</div>
             <div class="card-title">Photography Archive</div>
         </div>
     </div>
@@ -226,7 +203,7 @@
             <p style="margin-top: 20px; font-weight: 800;">Class of 2027</p>
         </div>
         <div>
-            <h3>Connect</h3>
+            <h3>Contact</h3>
             <p>Aditya Neil Banerjee</p>
             <a href="mailto:me@aditya.pt" class="contact-pill">me@aditya.pt</a>
         </div>
