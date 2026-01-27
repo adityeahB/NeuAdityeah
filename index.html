@@ -16,8 +16,10 @@
             --glass: rgba(255, 255, 255, 0.04);
             --border: rgba(255, 255, 255, 0.12);
             --float-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            /* REPLACED: Mind Silhouette with Global Data / Artistic Split */
-            --stem-art: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1920&q=80');
+            /* DYNAMIC OVERLAY: Darker for Dark Mode */
+            --header-overlay: rgba(26, 22, 20, 0.85);
+            /* STEM Silhouette with Global Data */
+            --stem-art: url('https://images.unsplash.com/photo-1614064641935-44cfe6a1cfb0?auto=format&fit=crop&w=1920&q=80');
         }
 
         [data-theme="light"] {
@@ -28,6 +30,8 @@
             --glass: rgba(0, 0, 0, 0.03);
             --border: rgba(0, 0, 0, 0.1);
             --float-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            /* DYNAMIC OVERLAY: Lighter for Light Mode */
+            --header-overlay: rgba(245, 241, 237, 0.85);
         }
 
         * { box-sizing: border-box; transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
@@ -51,12 +55,13 @@
         /* --- SECTIONS --- */
         section { padding: 120px 40px; border-bottom: 1px solid var(--border); }
 
-        /* --- LANDING PAGE (STEM + Creative Visuals) --- */
+        /* --- LANDING PAGE --- */
         header { 
             height: 100vh; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
             position: relative;
-            background-image: linear-gradient(rgba(26, 22, 20, 0.8), rgba(26, 22, 20, 0.7)), var(--stem-art);
+            /* Using Dynamic Overlay Variable */
+            background-image: linear-gradient(var(--header-overlay), var(--header-overlay)), var(--stem-art);
             background-size: cover; background-position: center; background-attachment: fixed;
             padding: 0 20px;
         }
@@ -67,8 +72,8 @@
             line-height: 1.2; margin: 0; font-weight: 900;
             width: 100%; max-width: 1100px;
             color: var(--text) !important;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            white-space: nowrap; /* Forces one line as requested */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            white-space: nowrap; 
         }
         
         .header-name { font-family: 'Inter', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-top: 25px; font-weight: 300; color: var(--accent); text-transform: uppercase; letter-spacing: 8px; }
@@ -87,7 +92,6 @@
         .card:hover { transform: translateY(-20px); background: rgba(255, 255, 255, 0.08); border-color: var(--accent); }
         .card img { width: 100%; height: 400px; object-fit: cover; border-radius: 30px; margin-bottom: 20px; }
 
-        /* Restored Hierarchy */
         .pub-name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 800; margin-bottom: 8px; display: block; }
         .article-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0; line-height: 1.1; }
         .nyt-neon { background: var(--neon); color: #000; padding: 4px 12px; display: inline-block; font-weight: 900; font-size: 0.9rem; margin-bottom: 15px; border-radius: 2px; transform: rotate(-1deg); }
@@ -97,10 +101,10 @@
         .book-block h2 { font-family: 'Playfair Display', serif; font-size: 4.5rem; margin: 0; line-height: 0.9; }
         .book-cover-img { width: 100%; max-width: 350px; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); justify-self: center; }
 
+        /* --- MUSINGS --- */
         .musing-item { max-width: 800px; margin: 0 auto 100px; font-family: 'Space Mono', monospace; border-left: 4px solid var(--neon); padding-left: 40px; }
         .musing-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-top: 0; color: var(--accent); font-style: italic; }
 
-        /* --- SIGN OFF & FOOTER --- */
         .sign-off { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; }
         .sign-off blockquote { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); max-width: 1000px; font-style: italic; line-height: 1.2; }
 
@@ -229,7 +233,7 @@
 </section>
 
 <section class="sign-off">
-    <blockquote>"There is no passion to be found playing small – in settling for a life that is less than the one you are capable of living."</blockquote>
+    <blockquote > "There is no passion to be found playing small – in settling for a life that is less than the one you are capable of living."</blockquote>
     <p style="margin-top: 30px; font-weight: 800; color: var(--accent);">— NELSON MANDELA</p>
 </section>
 
