@@ -10,9 +10,9 @@
     <style>
         :root {
             /* Espresso & Soft Sand Palette */
-            --bg: #1a1614; /* Espresso Deep */
-            --text: #f5f1ed; /* Soft Sand */
-            --accent: #d4a373; /* Muted Gold */
+            --bg: #1a1614; 
+            --text: #f5f1ed; 
+            --accent: #d4a373; 
             --glass: rgba(255, 255, 255, 0.04);
             --border: rgba(255, 255, 255, 0.1);
         }
@@ -51,7 +51,7 @@
         .country-card img { width: 100%; height: 500px; object-fit: cover; border-radius: 30px; }
         .country-card:hover { transform: translateY(-10px) rotate(1deg); }
 
-        /* --- THE BOOK (Special Design) --- */
+        /* --- THE BOOK --- */
         .book-block { max-width: 1200px; margin: 0 auto; background: var(--accent); color: #000; border-radius: 50px; padding: 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; cursor: pointer; }
         .book-block h2 { font-family: 'Playfair Display', serif; font-size: 4.5rem; margin: 0; line-height: 0.9; }
 
@@ -72,11 +72,12 @@
         .sign-off blockquote { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); max-width: 1000px; font-style: italic; line-height: 1.2; }
 
         /* --- FOOTER (The Jazz) --- */
-        footer { padding: 100px 40px; background: var(--accent); color: #000; position: relative; overflow: hidden; }
+        footer { padding: 120px 40px; background: var(--accent); color: #000; position: relative; overflow: hidden; }
         .footer-bg-text { position: absolute; font-size: 20rem; font-weight: 900; opacity: 0.05; bottom: -50px; left: -20px; white-space: nowrap; pointer-events: none; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-        .footer-logo { font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 0.8; font-weight: 900; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 0.9; font-weight: 900; letter-spacing: -2px; }
         .contact-pill { display: inline-block; padding: 15px 30px; border: 2px solid #000; border-radius: 50px; text-decoration: none; color: #000; font-weight: 800; margin-top: 20px; }
+        .legal-block { font-family: 'Space Mono', monospace; font-size: 0.65rem; line-height: 1.6; opacity: 0.8; }
 
         /* --- LGPD BANNER --- */
         #cookie-banner { position: fixed; bottom: 30px; left: 30px; right: 30px; background: #000; color: #fff; padding: 20px 40px; border-radius: 100px; z-index: 10005; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; border: 1px solid var(--accent); }
@@ -114,12 +115,12 @@
     <p style="opacity:0.5; margin-bottom:40px;">Slide across the blueprint →</p>
     <div class="countries-row">
         <div class="country-card" onclick="openPop('India', 'Heritage is an internal compass. For me, India is a lesson in resilience and the sheer power of human density. It informs my belief that no system is too complex to be understood, provided you know where the pulse is.')">
-            <img src="https://images.unsplash.com/photo-1524492717970-354794142764?auto=format&fit=crop&w=800" alt="India">
+            <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=800&q=80" alt="India">
             <div class="card-meta">Legacy</div>
             <div class="card-title">India</div>
         </div>
         <div class="country-card" onclick="openPop('Brazil', 'Brazil taught me about the conversation between light and concrete. My childhood wasn’t spent in the rainforest; it was spent in a culture that treats design as a living, breathing social force. It’s where I learned to appreciate the curve over the straight line.')">
-            <img src="https://images.unsplash.com/photo-1516307364728-4c4536743346?auto=format&fit=crop&w=800" alt="Brazil Architecture">
+            <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80" alt="Brazil">
             <div class="card-meta">Rhythm</div>
             <div class="card-title">Brazil</div>
         </div>
@@ -206,17 +207,17 @@
     <div class="footer-bg-text">2027</div>
     <div class="footer-grid">
         <div>
-            <div class="footer-logo">ADITYA<br>NEIL B.</div>
+            <div class="footer-logo">ADITYA<br>NEIL<br>BANERJEE</div>
             <p style="margin-top: 20px; font-weight: 800;">Class of 2027</p>
         </div>
         <div>
-            <h3>Connect</h3>
+            <h3>Contact</h3>
             <p>Aditya Neil Banerjee</p>
             <a href="mailto:me@aditya.pt" class="contact-pill">me@aditya.pt</a>
         </div>
-        <div style="font-size: 0.7rem; opacity: 0.6;">
-            <p>LGPD/GDPR COMPLIANT</p>
-            <p>Built with intention. No cookies, no tracking. All rights reserved 2026.</p>
+        <div class="legal-block">
+            <p style="font-weight: bold; color: #000; margin-bottom: 5px;">LGPD/GDPR COMPLIANT</p>
+            <p>Built with intention. No cookies, no tracking. <br>All rights reserved 2026.</p>
         </div>
     </div>
 </footer>
