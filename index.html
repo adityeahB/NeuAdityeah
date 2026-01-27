@@ -3,120 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aditya Neil Banerjee</title>
+    <title>Aditya Neil Banerjee | Creator</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;800&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #0d0d0d;
-            --text: #f0f0f0;
-            --accent: #ffdb58; /* Mustard/Gold Bold Accent */
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.15);
-            --musing-bg: #1a1a1a;
+            /* Espresso & Soft Sand Palette */
+            --bg: #1a1614; /* Espresso Deep */
+            --text: #f5f1ed; /* Soft Sand */
+            --accent: #d4a373; /* Muted Gold */
+            --glass: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         [data-theme="light"] {
-            --bg: #f5f5f7;
-            --text: #121212;
-            --accent: #ff4500;
+            --bg: #f5f1ed;
+            --text: #2d241e;
+            --accent: #bc6c25;
             --glass: rgba(0, 0, 0, 0.03);
-            --border: rgba(0, 0, 0, 0.1);
-            --musing-bg: #ffffff;
+            --border: rgba(0, 0, 0, 0.08);
         }
 
-        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
+        * { box-sizing: border-box; transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            margin: 0; padding: 0;
-            overflow-x: hidden;
-        }
-
-        /* --- NAVIGATION HAMBURGER --- */
-        .hamburger {
-            position: fixed; top: 30px; right: 30px; z-index: 10002;
-            cursor: pointer; background: var(--glass); padding: 15px;
-            border-radius: 50%; backdrop-filter: blur(10px); border: 1px solid var(--border);
-        }
-        .nav-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg); z-index: 10001; display: none;
-            flex-direction: column; justify-content: center; align-items: center;
-        }
-        .nav-overlay a {
-            font-family: 'Playfair Display', serif; font-size: 4rem;
-            color: var(--text); text-decoration: none; margin: 10px 0;
-        }
+        /* --- NAVIGATION --- */
+        .hamburger { position: fixed; top: 30px; right: 30px; z-index: 10002; cursor: pointer; background: var(--glass); padding: 15px; border-radius: 50%; backdrop-filter: blur(10px); border: 1px solid var(--border); }
+        .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 10001; display: none; flex-direction: column; justify-content: center; align-items: center; }
+        .nav-overlay a { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--text); text-decoration: none; margin: 10px 0; }
         .nav-overlay a:hover { color: var(--accent); font-style: italic; }
 
         /* --- THEME TOGGLE --- */
-        .theme-toggle {
-            position: fixed; top: 30px; left: 30px; z-index: 10000;
-            cursor: pointer; width: 50px; height: 50px;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .theme-toggle { position: fixed; top: 30px; left: 30px; z-index: 10000; cursor: pointer; background: var(--glass); border: 1px solid var(--border); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); color: var(--text); }
 
         /* --- SECTIONS --- */
-        section { padding: 100px 20px; border-bottom: 1px solid var(--border); }
+        section { padding: 120px 40px; border-bottom: 1px solid var(--border); }
 
         /* --- HEADER --- */
-        header {
-            height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-        }
-        h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 15vw, 12rem); line-height: 0.8; margin: 0; }
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 15vw, 10rem); line-height: 0.8; margin: 0; letter-spacing: -4px; }
 
-        /* --- COUNTRIES (One Line) --- */
-        .countries-row {
-            display: flex; gap: 20px; overflow-x: auto;
-            padding: 20px 0; scrollbar-width: none;
-        }
+        /* --- COUNTRIES (One Line Row) --- */
+        .countries-row { display: flex; gap: 30px; overflow-x: auto; padding: 40px 0; scrollbar-width: none; }
         .countries-row::-webkit-scrollbar { display: none; }
-        .country-card {
-            flex: 0 0 calc(25% - 15px); min-width: 300px;
-            background: var(--glass); border-radius: 40px; padding: 15px;
-            border: 1px solid var(--border); cursor: pointer;
-        }
+        .country-card { flex: 0 0 400px; background: var(--glass); border-radius: 40px; padding: 15px; border: 1px solid var(--border); cursor: pointer; position: relative; }
         .country-card img { width: 100%; height: 500px; object-fit: cover; border-radius: 30px; }
+        .country-card:hover { transform: translateY(-10px) rotate(1deg); }
 
-        /* --- WRITING HIGHLIGHTS --- */
-        .nyt-title { background: var(--accent); color: #000; padding: 0 10px; display: inline-block; }
-        .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px; max-width: 1400px; margin: 0 auto;
-        }
+        /* --- THE BOOK (Special Design) --- */
+        .book-block { max-width: 1200px; margin: 0 auto; background: var(--accent); color: #000; border-radius: 50px; padding: 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; cursor: pointer; }
+        .book-block h2 { font-family: 'Playfair Display', serif; font-size: 4.5rem; margin: 0; line-height: 0.9; }
 
-        /* --- MUSINGS (Distinct Style) --- */
-        #musings { background-color: var(--musing-bg); color: var(--text); }
-        .musing-block {
-            max-width: 800px; margin: 0 auto 60px; padding: 40px;
-            border-left: 5px solid var(--accent);
-            font-family: 'Space Mono', monospace;
-        }
-        .musing-block h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-top: 0; }
+        /* --- WRITING --- */
+        .nyt-title { background: #000; color: #fff; padding: 5px 15px; display: inline-block; font-weight: 800; font-size: 0.8rem; margin-bottom: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .card { background: var(--glass); border-radius: 40px; padding: 25px; border: 1px solid var(--border); cursor: pointer; position: relative; }
+        .card img { width: 100%; height: 400px; object-fit: cover; border-radius: 30px; margin-bottom: 20px; }
+        .card-meta { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); }
 
-        /* --- FOOTER (Jazzed) --- */
-        footer {
-            background: var(--bg); padding: 100px 40px; text-align: left;
-            display: flex; flex-wrap: wrap; justify-content: space-between;
-        }
-        .footer-left h2 { font-family: 'Playfair Display', serif; font-size: 5rem; margin: 0; }
-        .footer-right { max-width: 400px; }
+        /* --- MUSINGS --- */
+        #musings { background: var(--glass); }
+        .musing-item { max-width: 800px; margin: 0 auto 100px; font-family: 'Space Mono', monospace; border-left: 4px solid var(--accent); padding-left: 40px; }
+        .musing-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-top: 0; color: var(--accent); font-style: italic; }
+
+        /* --- SIGN OFF (MANDELA) --- */
+        .sign-off { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; }
+        .sign-off blockquote { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); max-width: 1000px; font-style: italic; line-height: 1.2; }
+
+        /* --- FOOTER (The Jazz) --- */
+        footer { padding: 100px 40px; background: var(--accent); color: #000; position: relative; overflow: hidden; }
+        .footer-bg-text { position: absolute; font-size: 20rem; font-weight: 900; opacity: 0.05; bottom: -50px; left: -20px; white-space: nowrap; pointer-events: none; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 0.8; font-weight: 900; }
+        .contact-pill { display: inline-block; padding: 15px 30px; border: 2px solid #000; border-radius: 50px; text-decoration: none; color: #000; font-weight: 800; margin-top: 20px; }
 
         /* --- LGPD BANNER --- */
-        #cookie-banner {
-            position: fixed; bottom: 30px; left: 30px; right: 30px;
-            background: var(--text); color: var(--bg); padding: 20px;
-            border-radius: 20px; z-index: 10005; display: flex;
-            justify-content: space-between; align-items: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .cookie-btn { background: var(--bg); color: var(--text); padding: 10px 20px; border-radius: 30px; cursor: pointer; border:none; font-weight: bold; }
+        #cookie-banner { position: fixed; bottom: 30px; left: 30px; right: 30px; background: #000; color: #fff; padding: 20px 40px; border-radius: 100px; z-index: 10005; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; border: 1px solid var(--accent); }
 
+        /* --- MODAL --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 20000; padding: 80px 40px; overflow-y: auto; }
+        .modal-content { max-width: 800px; margin: 0 auto; }
+        .modal-content h2 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--accent); }
     </style>
 </head>
 <body>
@@ -125,102 +93,144 @@
 <div class="nav-overlay" id="navOverlay">
     <span style="position:fixed; top:30px; right:30px; font-size:2rem; cursor:pointer;" onclick="toggleNav()">✕</span>
     <a href="#home" onclick="toggleNav()">Home</a>
-    <a href="#cultures" onclick="toggleNav()">Cultures</a>
+    <a href="#cultures" onclick="toggleNav()">Origins</a>
+    <a href="#book" onclick="toggleNav()">Author</a>
     <a href="#writing" onclick="toggleNav()">Writing</a>
-    <a href="#musings" onclick="toggleNav()">Musings</a>
-    <a href="#interests" onclick="toggleNav()">Interests</a>
+    <a href="#musings" onclick="toggleNav()">Notebook</a>
+    <a href="#interests" onclick="toggleNav()">Media</a>
 </div>
 
 <div class="theme-toggle" onclick="toggleTheme()">
-    <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
 </div>
 
 <header id="home">
     <h1>ADITYA<br>NEIL<br>BANERJEE</h1>
+    <div style="margin-top: 20px; font-weight: 800; letter-spacing: 4px; opacity: 0.6;">CLASS OF 2027</div>
 </header>
 
 <section id="cultures">
-    <h2 style="font-family:'Playfair Display'; font-size: 3rem;">Global Blueprint</h2>
+    <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 0;">Global Origins</h2>
+    <p style="opacity:0.5; margin-bottom:40px;">Slide across the blueprint →</p>
     <div class="countries-row">
-        <div class="country-card" onclick="openPop('India', 'India is a masterclass in organized chaos. It is a place where history doesn’t sit in museums; it lives on the street corners. My connection to it is one of deep-seated curiosity—a heritage that informs my perspective on community and the relentless pace of growth.')">
-            <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=800" alt="India Cityscape">
-            <div class="card-meta">The Heritage</div>
+        <div class="country-card" onclick="openPop('India', 'Heritage is an internal compass. For me, India is a lesson in resilience and the sheer power of human density. It informs my belief that no system is too complex to be understood, provided you know where the pulse is.')">
+            <img src="https://images.unsplash.com/photo-1524492717970-354794142764?auto=format&fit=crop&w=800" alt="India">
+            <div class="card-meta">Legacy</div>
             <div class="card-title">India</div>
         </div>
-        <div class="country-card" onclick="openPop('Brazil', 'Brazil is defined by its vibrant modernity and tropical heart. My time here wasn’t about the clichés; it was about observing the intersection of nature and architecture. It taught me that design should be fluid, and life should be lived with a rhythmic intentionality.')">
-            <img src="https://images.unsplash.com/photo-1491466424936-e304919a9ff2?auto=format&fit=crop&w=800" alt="Modernist Brazil">
-            <div class="card-meta">The Rhythm</div>
+        <div class="country-card" onclick="openPop('Brazil', 'Brazil taught me about the conversation between light and concrete. My childhood wasn’t spent in the rainforest; it was spent in a culture that treats design as a living, breathing social force. It’s where I learned to appreciate the curve over the straight line.')">
+            <img src="https://images.unsplash.com/photo-1516307364728-4c4536743346?auto=format&fit=crop&w=800" alt="Brazil Architecture">
+            <div class="card-meta">Rhythm</div>
             <div class="card-title">Brazil</div>
         </div>
-        <div class="country-card" onclick="openPop('USA', 'The United States exists for me as a series of intellectual frameworks. Having spent my life in American academic systems, I view the US as an engine of innovation and high-stakes storytelling. It is the place where my writing voice found its structure and its drive.')">
-            <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=800" alt="USA Innovation">
-            <div class="card-meta">The Framework</div>
+        <div class="country-card" onclick="openPop('USA', 'The United States is my intellectual training ground. Spent within American schools, my perspective is framed by the constant pursuit of the next big question. It is the language of analysis and the drive of the narrative.')">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800" alt="USA">
+            <div class="card-meta">Intellect</div>
             <div class="card-title">USA</div>
         </div>
-        <div class="country-card" onclick="openPop('Portugal', 'Portugal is where the global meets the traditional. Living here as a young adult has introduced me to the concept of \'Saudade\' and the EU’s unique social tapestry. It’s a culture of understated elegance and the art of solving problems with creative flair.')">
-            <img src="https://images.unsplash.com/photo-1513740193101-8e040bd39b1d?auto=format&fit=crop&w=800" alt="Portugal Maritime">
-            <div class="card-meta">The Current</div>
+        <div class="country-card" onclick="openPop('Portugal', 'Portugal is the stage for my adulthood. It is where traditional cobblestones meet the digital frontier. Here, I’ve learned that sometimes the best way forward is to embrace the slow, deliberate pace of the Atlantic.')">
+            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=800" alt="Portugal">
+            <div class="card-meta">Current</div>
             <div class="card-title">Portugal</div>
         </div>
     </div>
 </section>
 
+<section id="book">
+    <div class="book-block" onclick="window.open('https://www.amazon.com/Weight-Cloud-Other-Poems-ebook/dp/B0FXGLB1W7/', '_blank')">
+        <div>
+            <div style="background: #000; color: #fff; padding: 5px 15px; border-radius: 20px; display: inline-block; font-size: 0.8rem; margin-bottom: 20px;">PUBLISHED COLLECTION</div>
+            <h2>THE WEIGHT OF A CLOUD</h2>
+            <p style="font-size: 1.3rem; margin-top: 20px; line-height: 1.5;">An exploration of home, identity, and the ephemeral moments in between. My debut poetry collection.</p>
+        </div>
+        <div style="font-size: 10rem; text-align: right;">☁️</div>
+    </div>
+</section>
+
 <section id="writing">
-    <h2 style="font-family:'Playfair Display'; font-size: 3rem;">Publications</h2>
+    <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 60px;">Publications</h2>
     <div class="grid">
         <div class="card" onclick="window.open('https://www.nytimes.com/2025/05/15/learning/how-to-be-a-stargazer.html', '_blank')">
+            <div class="nyt-title">NEW YORK TIMES</div>
             <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=800" alt="Stars">
-            <div class="card-meta">Feature Article</div>
-            <div class="card-title"><span class="nyt-title">NEW YORK TIMES</span></div>
+            <div class="card-meta">Guest Perspective</div>
+            <div class="card-title">How to be a Stargazer</div>
         </div>
         <div class="card" onclick="window.open('https://ohsobserver.com/overwhelmed/', '_blank')">
             <img src="https://ohsobserver.com/wp-content/uploads/2025/05/overwhelmed.png" alt="Overwhelmed">
-            <div class="card-meta">Stanford OHS OBSERVER</div>
+            <div class="card-meta">Stanford OHS Observer</div>
             <div class="card-title">Overwhelmed</div>
         </div>
         <div class="card" onclick="window.open('https://ohsobserver.com/rent-control-will-it-work/', '_blank')">
             <img src="https://ohsobserver.com/wp-content/uploads/2026/01/rent.png" alt="Rent">
-            <div class="card-meta">Stanford OHS OBSERVER</div>
-            <div class="card-title">The Rent Trap</div>
+            <div class="card-meta">Stanford OHS Observer</div>
+            <div class="card-title">The Rent Control Question</div>
         </div>
     </div>
 </section>
 
 <section id="musings">
-    <h2 style="font-family:'Playfair Display'; font-size: 3rem; text-align:center;">Notebook</h2>
-    <div class="musing-block">
-        <h3>The Productivity Paradox</h3>
-        <p>In 2026, we’ve reached a point where AI does the work, but we feel busier than ever. Why? Because we haven’t learned how to trade productivity for leisure. We’ve just raised the ceiling on our expectations.</p>
+    <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 80px; text-align:center;">The Unscripted Lab</h2>
+    <div class="musing-item">
+        <h3>The AI-Leisure Trap</h3>
+        <p>In 2026, we were promised that AI would give us back our time. Instead, it’s just increased the baseline for how much we are expected to produce. We are in a race to the bottom of the attention span.</p>
     </div>
-    <div class="musing-block">
-        <h3>The Death of the 15-Minute City</h3>
-        <p>Urbanism is failing not because of design, but because of digital isolation. We can walk to the cafe in 15 minutes, but we’re still on Zoom when we get there. Physical proximity is no longer enough to build community.</p>
+    <div class="musing-item">
+        <h3>Post-Global Identity</h3>
+        <p>Nationalism is rising because digital globalization failed to provide a sense of belonging. We can talk to anyone, anywhere, yet we’ve never been more desperate to define exactly which border we stand behind.</p>
     </div>
 </section>
 
-<footer id="interests">
-    <div class="footer-left">
-        <h2>ADITYA</h2>
-        <p class="class-tag" style="font-family: 'Playfair Display'; font-size: 2rem;">Class of 2027</p>
+<section id="interests">
+    <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 60px;">Sound & Vision</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800" alt="Music">
+            <div class="card-meta">Interests</div>
+            <div class="card-title">Soundscapes</div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?auto=format&fit=crop&w=800" alt="Photography">
+            <div class="card-meta">Interests</div>
+            <div class="card-title">Photography Archive</div>
+        </div>
     </div>
-    <div class="footer-right">
-        <p>Aditya Neil Banerjee</p>
-        <p><a href="mailto:me@aditya.pt" style="color:var(--accent)">me@aditya.pt</a></p>
-        <p>© 2026. All visual elements comply with EU LGPD/GDPR. No tracking, just creation.</p>
-        <div style="font-style: italic; margin-top: 40px;">"There is no passion to be found playing small – in settling for a life that is less than the one you are capable of living." — Nelson Mandela</div>
+</section>
+
+<section class="sign-off">
+    <blockquote>"There is no passion to be found playing small – in settling for a life that is less than the one you are capable of living."</blockquote>
+    <p style="margin-top: 30px; font-weight: 800; color: var(--accent);">— NELSON MANDELA</p>
+</section>
+
+<footer>
+    <div class="footer-bg-text">2027</div>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo">ADITYA<br>NEIL B.</div>
+            <p style="margin-top: 20px; font-weight: 800;">Class of 2027</p>
+        </div>
+        <div>
+            <h3>Connect</h3>
+            <p>Aditya Neil Banerjee</p>
+            <a href="mailto:me@aditya.pt" class="contact-pill">me@aditya.pt</a>
+        </div>
+        <div style="font-size: 0.7rem; opacity: 0.6;">
+            <p>LGPD/GDPR COMPLIANT</p>
+            <p>Built with intention. No cookies, no tracking. All rights reserved 2026.</p>
+        </div>
     </div>
 </footer>
 
 <div id="cookie-banner">
-    <span>We respect your privacy. This site uses no cookies. LGPD Compliant.</span>
-    <button class="cookie-btn" onclick="document.getElementById('cookie-banner').style.display='none'">GOT IT</button>
+    <span>🛡️ Privacy First. This site uses zero cookies. LGPD Compliant.</span>
+    <button style="background:var(--accent); color:#000; border:none; padding:10px 20px; border-radius:30px; cursor:pointer; font-weight:800;" onclick="document.getElementById('cookie-banner').style.display='none'">UNDERSTOOD</button>
 </div>
 
-<div id="popout" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg); z-index:20000; padding:100px 50px;">
-    <span onclick="closePop()" style="position:fixed; top:40px; right:50px; cursor:pointer; font-size:2rem;">✕</span>
-    <div class="modal-content" style="max-width:800px; margin:0 auto;">
-        <h2 id="pTitle" style="font-family:'Playfair Display'; font-size:4rem; color:var(--accent);"></h2>
-        <p id="pBody" style="font-size:1.5rem; line-height:1.6;"></p>
+<div id="popout" class="modal">
+    <span class="close-modal" onclick="closePop()">✕ CLOSE</span>
+    <div class="modal-content">
+        <h2 id="pTitle"></h2>
+        <p id="pBody" style="font-size: 1.6rem; line-height: 1.8;"></p>
     </div>
 </div>
 
@@ -229,18 +239,15 @@
         const nav = document.getElementById('navOverlay');
         nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
     }
-
     function toggleTheme() {
         const doc = document.documentElement;
         doc.setAttribute('data-theme', doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     }
-
     function openPop(title, body) {
         document.getElementById('pTitle').innerText = title;
         document.getElementById('pBody').innerText = body;
         document.getElementById('popout').style.display = 'block';
     }
-
     function closePop() { document.getElementById('popout').style.display = 'none'; }
 </script>
 
