@@ -64,31 +64,56 @@
         section { padding: 120px 40px; border-bottom: 1px solid var(--border); }
 
         /* --- LANDING PAGE --- */
-        header { 
-    height: 100vh; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
+  /* --- LANDING PAGE HEADER --- */
+header { 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     position: relative;
-    background-image: linear-gradient(var(--header-overlay), var(--header-overlay)), var(--stem-art);
+    background-image:
+        linear-gradient(var(--header-overlay), var(--header-overlay)),
+        url('https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=1920&q=80'); /* Nautilus shell */
     background-size: cover; 
     background-position: center; 
     background-attachment: scroll;
     padding: 0 20px;
 }
-        
-        h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(1.2rem, 3.5vw, 3rem); 
-            line-height: 1.2; margin: 0; font-weight: 900;
-            width: 100%; max-width: 1100px;
-            color: var(--text) !important;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            white-space: nowrap; 
-        }
-        
+
+h1 {
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: 1.2; 
+    margin: 0; 
+    font-weight: 900;
+    color: var(--text);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    max-width: 1100px;
+}
+
+.header-name {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem); 
+    margin-top: 20px;
+    font-weight: 300;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: clamp(2px, 1vw, 8px); 
+    text-align: center;
+    line-height: 1.2;
+}
+
+.header-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem); 
+    opacity: 0.7;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 1.4;
+}       
         .header-name { font-family: 'Inter', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-top: 25px; font-weight: 300; color: var(--accent); text-transform: uppercase; letter-spacing: 8px; }
         .header-tag { font-family: 'Space Mono', monospace; margin-top: 15px; font-size: 1rem; opacity: 0.6; letter-spacing: 2px; }
 
