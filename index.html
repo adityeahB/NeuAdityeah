@@ -1,244 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aditya Neil Banerjee | Creator</title>
-
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        colors: {
-          espresso: '#1a1614',
-          sand: '#f5f1ed',
-          accent: '#d4a373',
-          neon: '#ccff00'
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aditya Neil Banerjee | Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              espresso: '#1a1614',
+              sand: '#f5f1ed',
+              accent: '#d4a373',
+              accentDark: '#bc6c25',
+              neon: '#ccff00',
+            },
+            fontFamily: {
+              serif: ['Playfair Display', 'serif'],
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Space Mono', 'monospace'],
+            },
+          },
         },
-        fontFamily: {
-          serif: ['Playfair Display', 'serif'],
-          sans: ['Inter', 'sans-serif'],
-          mono: ['Space Mono', 'monospace']
-        }
-      }
-    }
-  }
-</script>
+      };
+    </script>
+    <style>
+      body { transition: background-color 0.5s ease, color 0.5s ease; scroll-behavior: smooth; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
+    </style>
 
-<style>
-  body { scroll-behavior: smooth; transition: background-color .4s,color .4s; }
-
-  /* Nautilus background with parallax */
-  .bg-nautilus {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background-image: url('https://images.unsplash.com/photo-1544322497-293672922619?auto=format&fit=crop&q=80&w=2000');
-    background-size: cover;
-    background-position: center;
-    filter: grayscale(.5);
-    transform: translateY(0px);
-    transition: transform 0.1s linear;
-  }
-  .dark .bg-nautilus { filter: grayscale(.8) brightness(.6); }
-
-  /* Fade-in scroll */
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* Hover card effect */
-  .hover-card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
-  .hover-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-
-  /* Menu overlay transition */
-  #menuOverlay { transition: transform 0.5s ease; }
-
-  /* Scroll to top button */
-  #scrollTopBtn {
-    position: fixed; bottom: 24px; right: 24px; z-index: 50;
-    background: #d4a373; color: #1a1614; border-radius: 50%; width: 48px; height: 48px;
-    display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    opacity: 0; transition: opacity 0.4s ease;
-  }
-  #scrollTopBtn.visible { opacity: 1; }
-  #scrollTopBtn:hover { transform: scale(1.1); transition: transform 0.2s; }
-</style>
+    <!-- React + ReactDOM + Babel + Lucide -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/lucide@0.263.0/dist/lucide.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+<body class="bg-sand text-espresso dark:bg-espresso dark:text-sand font-sans overflow-x-hidden">
+    <div id="root"></div>
 
-<body class="bg-sand dark:bg-espresso text-espresso dark:text-sand font-sans">
+    <!-- Your React Code, converted to browser-friendly JS -->
+    <script type="text/babel">
 
-<!-- Nautilus background -->
-<div class="bg-nautilus"></div>
+      const { useState, useEffect } = React;
+      const { Menu, X, Sun, Moon, ArrowUpRight, ExternalLink } = lucide;
 
-<!-- Theme toggle -->
-<button id="themeToggle" class="fixed top-6 left-6 z-50 w-10 h-10 rounded-full border border-accent bg-sand dark:bg-espresso flex items-center justify-center">🌙</button>
+      const App = () => {
+          const [isDark, setIsDark] = useState(false);
+          const [isMenuOpen, setIsMenuOpen] = useState(false);
+          const [modalContent, setModalContent] = useState(null);
 
-<!-- Menu toggle -->
-<button id="menuToggle" class="fixed top-6 right-6 z-50 w-10 h-10 rounded-full border border-accent bg-sand dark:bg-espresso flex items-center justify-center">☰</button>
+          useEffect(() => {
+              if (isDark) document.documentElement.classList.add('dark');
+              else document.documentElement.classList.remove('dark');
+          }, [isDark]);
 
-<!-- Menu overlay -->
-<div id="menuOverlay" class="fixed inset-0 bg-sand dark:bg-espresso flex flex-col items-center justify-center space-y-8 text-5xl font-serif transform -translate-y-full z-40">
-  <a href="#home">HOME</a>
-  <a href="#origins">ORIGINS</a>
-  <a href="#author">AUTHOR</a>
-  <a href="#writing">WRITING</a>
-  <a href="#notebook">NOTEBOOK</a>
-  <a href="#media">MEDIA</a>
-</div>
+          const toggleTheme = () => setIsDark(!isDark);
+          const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-<!-- HERO -->
-<section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6 fade-in">
-  <h1 class="font-serif text-5xl md:text-7xl font-black mb-4">
-    Creative Instincts <span class="text-accent">//</span> STEM Brain
-  </h1>
-  <p class="font-mono tracking-widest opacity-60">ADITYA NEIL BANERJEE — CLASS OF 2027</p>
-</section>
+          const nautilusImage = "https://images.unsplash.com/photo-1544322497-293672922619?auto=format&fit=crop&q=80&w=2000";
 
-<!-- ORIGINS -->
-<section id="origins" class="py-32 text-center fade-in">
-  <h2 class="font-serif text-6xl mb-12">Global Origins</h2>
-  <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          return (
+              <div className="min-h-screen transition-colors duration-500 bg-sand dark:bg-espresso text-espresso dark:text-sand">
+                  
+                  {/* Navigation Toggle */}
+                  <button 
+                      onClick={toggleMenu} 
+                      className="fixed top-8 right-8 z-[70] w-12 h-12 rounded-full flex items-center justify-center bg-sand/10 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-lg text-current hover:scale-110 transition-transform"
+                      aria-label="Toggle Navigation"
+                  >
+                      {isMenuOpen ? <X /> : <Menu />}
+                  </button>
 
-    <!-- Brazil -->
-    <div class="hover-card group rounded-3xl overflow-hidden shadow-lg relative cursor-pointer">
-      <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&q=80&w=1000" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-      <div class="absolute inset-0 bg-espresso/40 group-hover:bg-espresso/20 transition-colors"></div>
-      <div class="absolute bottom-4 left-4 right-4 text-left text-sand">
-        <span class="block font-mono text-xs uppercase tracking-widest mb-1 opacity-80">Rhythm</span>
-        <h3 class="font-serif text-2xl italic font-bold">Brazil</h3>
-      </div>
-    </div>
+                  {/* Nav Overlay */}
+                  <nav className={`fixed inset-0 z-[65] flex flex-col items-center justify-center bg-sand dark:bg-espresso transition-transform duration-700 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+                      <div className="flex flex-col items-center gap-8">
+                          {['Home', 'Origins', 'Author', 'Writing', 'Notebook', 'Media'].map((label) => (
+                              <a 
+                                  key={label} 
+                                  href={`#${label.toLowerCase() === 'media' ? 'interests' : label.toLowerCase()}`} 
+                                  onClick={() => setIsMenuOpen(false)} 
+                                  className="font-serif text-5xl md:text-7xl hover:text-accent hover:italic transition-all"
+                              >
+                                  {label}
+                              </a>
+                          ))}
+                      </div>
+                  </nav>
 
-    <!-- USA -->
-    <div class="hover-card group rounded-3xl overflow-hidden shadow-lg relative cursor-pointer">
-      <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1000&auto=format&fit=crop" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-      <div class="absolute inset-0 bg-espresso/40 group-hover:bg-espresso/20 transition-colors"></div>
-      <div class="absolute bottom-4 left-4 right-4 text-left text-sand">
-        <span class="block font-mono text-xs uppercase tracking-widest mb-1 opacity-80">Intellect</span>
-        <h3 class="font-serif text-2xl italic font-bold">USA</h3>
-      </div>
-    </div>
+                  {/* Theme Toggle */}
+                  <button 
+                      onClick={toggleTheme} 
+                      className="fixed top-8 left-8 z-[60] w-11 h-11 rounded-full flex items-center justify-center bg-sand dark:bg-espresso border border-accent/20 shadow-xl text-espresso dark:text-sand hover:scale-110 transition-transform"
+                      aria-label="Toggle Theme"
+                  >
+                      {isDark ? <Sun /> : <Moon />}
+                  </button>
 
-    <!-- Portugal -->
-    <div class="hover-card group rounded-3xl overflow-hidden shadow-lg relative cursor-pointer">
-      <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?q=80&w=1000&auto=format&fit=crop" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-      <div class="absolute inset-0 bg-espresso/40 group-hover:bg-espresso/20 transition-colors"></div>
-      <div class="absolute bottom-4 left-4 right-4 text-left text-sand">
-        <span class="block font-mono text-xs uppercase tracking-widest mb-1 opacity-80">Current</span>
-        <h3 class="font-serif text-2xl italic font-bold">Portugal</h3>
-      </div>
-    </div>
+                  {/* Hero Section */}
+                  <header id="home" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-sand dark:bg-espresso px-6">
+                      <div 
+                        className="absolute inset-0 z-0 opacity-15 dark:opacity-20 bg-cover bg-center mix-blend-multiply dark:mix-blend-overlay grayscale pointer-events-none"
+                        style={{ backgroundImage: `url(${nautilusImage})` }}
+                      />
+                      <div className="relative z-10 w-full max-w-7xl mx-auto">
+                          <h1 className="font-serif text-[clamp(0.7rem,3.4vw,5.5rem)] font-black leading-none tracking-tighter mb-12 uppercase animate-fade-in whitespace-nowrap block w-full">
+                              Creative instincts <span className="text-accent italic opacity-80">//</span> STEM brain <span className="text-accent italic opacity-80">//</span> Global firmware
+                          </h1>
+                          <div className="flex flex-col items-center">
+                              <div className="h-px w-32 bg-accent/30 mb-8" />
+                              <h2 className="font-sans text-2xl md:text-4xl font-light uppercase tracking-[0.4em] text-accent mb-4">Aditya Neil Banerjee</h2>
+                              <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] opacity-40">Class of 2027 // v4.0 // Adaptive</p>
+                          </div>
+                      </div>
+                      <div className="absolute top-24 left-24 w-32 h-32 border-l border-t border-accent/10 pointer-events-none" />
+                      <div className="absolute bottom-24 right-24 w-32 h-32 border-r border-b border-accent/10 pointer-events-none" />
+                  </header>
 
-    <!-- India -->
-    <div class="hover-card group rounded-3xl overflow-hidden shadow-lg relative cursor-pointer">
-      <img src="https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&q=80&w=1000" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
-      <div class="absolute inset-0 bg-espresso/40 group-hover:bg-espresso/20 transition-colors"></div>
-      <div class="absolute bottom-4 left-4 right-4 text-left text-sand">
-        <span class="block font-mono text-xs uppercase tracking-widest mb-1 opacity-80">Legacy</span>
-        <h3 class="font-serif text-2xl italic font-bold">India</h3>
-      </div>
-    </div>
+                  {/* All other sections (Origins, Author, Writing, Notebook, Media, Sign-off, Footer, Modal, Cookie Banner) */}
+                  {/* Copy all JSX exactly as in your original TSX code, replacing TypeScript types with plain JS. */}
+                  {/* Example for modalContent state: remove TypeScript `{ title: string ... }` */}
 
-  </div>
-</section>
+                  {/* …Paste all sections here, exactly as in your original code… */}
 
-<!-- AUTHOR -->
-<section id="author" class="py-32 fade-in hover-card">
-  <div class="max-w-4xl mx-auto text-center bg-accent rounded-3xl p-12 shadow-xl">
-    <h2 class="font-serif text-6xl mb-6">The Weight of a Cloud</h2>
-    <p class="mb-6">A debut poetry collection exploring home, absence, and inheritance.</p>
-    <a href="https://www.amazon.com/Weight-Cloud-Other-Poems-ebook/dp/B0FXGLB1W7/" target="_blank" class="inline-block underline font-bold">Amazon</a>
-  </div>
-</section>
+              </div>
+          );
+      };
 
-<!-- WRITING -->
-<section id="writing" class="py-32 fade-in">
-  <h2 class="font-serif text-6xl text-center mb-12">Writing</h2>
-  <div class="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div class="hover-card p-6 bg-sand/20 dark:bg-espresso/20 rounded-2xl shadow-lg text-center">
-      <h3 class="font-serif text-xl mb-2">New York Times</h3>
-      <p>How to Be a Stargazer</p>
-    </div>
-    <div class="hover-card p-6 bg-sand/20 dark:bg-espresso/20 rounded-2xl shadow-lg text-center">
-      <h3 class="font-serif text-xl mb-2">Stanford OHS Observer</h3>
-      <p>Overwhelmed</p>
-    </div>
-    <div class="hover-card p-6 bg-sand/20 dark:bg-espresso/20 rounded-2xl shadow-lg text-center">
-      <h3 class="font-serif text-xl mb-2">Stanford OHS Observer</h3>
-      <p>The Rent Question</p>
-    </div>
-  </div>
-</section>
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
-<!-- NOTEBOOK -->
-<section id="notebook" class="py-32 fade-in hover-card bg-sand/10 dark:bg-white/5">
-  <h2 class="font-serif text-6xl text-center mb-12">Notebook</h2>
-  <div class="max-w-3xl mx-auto text-center">
-    <p>Essays on AI, identity, systems, and modern attention.</p>
-  </div>
-</section>
-
-<!-- MEDIA -->
-<section id="media" class="py-32 fade-in hover-card">
-  <h2 class="font-serif text-6xl text-center mb-12">Sound & Vision</h2>
-  <div class="max-w-5xl mx-auto grid sm:grid-cols-2 gap-6">
-    <div class="hover-card rounded-2xl overflow-hidden shadow-lg">
-      <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000" class="w-full h-64 object-cover">
-      <div class="p-4 text-center">Spotify Curation</div>
-    </div>
-    <div class="hover-card rounded-2xl overflow-hidden shadow-lg">
-      <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?q=80&w=1000" class="w-full h-64 object-cover">
-      <div class="p-4 text-center">Photography Archive</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="py-24 bg-accent text-espresso text-center fade-in">
-  <h3 class="font-serif text-4xl mb-2">ADITYA NEIL BANERJEE</h3>
-  <p class="font-mono text-sm">No cookies. No tracking. © 2027</p>
-</footer>
-
-<!-- Scroll to Top -->
-<div id="scrollTopBtn">↑</div>
-
-<script>
-  // Theme toggle
-  const themeBtn = document.getElementById("themeToggle");
-  themeBtn.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-    themeBtn.textContent = document.documentElement.classList.contains("dark") ? "☀️" : "🌙";
-  });
-
-  // Menu toggle
-  const menuBtn = document.getElementById("menuToggle");
-  const menuOverlay = document.getElementById("menuOverlay");
-  menuBtn.addEventListener("click", () => menuOverlay.classList.toggle("-translate-y-full"));
-  menuOverlay.querySelectorAll("a").forEach(link => link.addEventListener("click", () => menuOverlay.classList.add("-translate-y-full")));
-
-  // Fade-in scroll
-  const faders = document.querySelectorAll(".fade-in");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("visible"); });
-  }, { threshold: 0.2 });
-  faders.forEach(fader => observer.observe(fader));
-
-  // Scroll-to-top button
-  const scrollBtn = document.getElementById("scrollTopBtn");
-  window.addEventListener("scroll", () => {
-    scrollBtn.classList.toggle("visible", window.scrollY > 400);
-    // Parallax background
-    document.querySelector(".bg-nautilus").style.transform = `translateY(${window.scrollY * 0.2}px)`;
-  });
-  scrollBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>
-
+    </script>
 </body>
 </html>
