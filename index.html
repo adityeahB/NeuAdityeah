@@ -32,12 +32,13 @@
       @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
       .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
     </style>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body class="bg-sand text-espresso dark:bg-espresso dark:text-sand font-sans overflow-x-hidden">
     <div id="root"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <script type="text/babel">
         const { useState, useEffect } = React;
@@ -103,7 +104,6 @@
 
             return (
                 <div className="min-h-screen transition-colors duration-500 bg-sand dark:bg-espresso text-espresso dark:text-sand">
-                    {/* Navigation Toggle */}
                     <button 
                         onClick={toggleMenu} 
                         className="fixed top-8 right-8 z-[70] w-12 h-12 rounded-full flex items-center justify-center bg-sand/10 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-lg text-current hover:scale-110 transition-transform"
@@ -112,7 +112,6 @@
                         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
 
-                    {/* Nav Overlay */}
                     <nav className={`fixed inset-0 z-[65] flex flex-col items-center justify-center bg-sand dark:bg-espresso transition-transform duration-700 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
                         <div className="flex flex-col items-center gap-8">
                             {['Home', 'Origins', 'Author', 'Writing', 'Notebook', 'Media'].map((label) => (
@@ -128,7 +127,6 @@
                         </div>
                     </nav>
 
-                    {/* Theme Toggle */}
                     <button 
                         onClick={toggleTheme} 
                         className="fixed top-8 left-8 z-[60] w-11 h-11 rounded-full flex items-center justify-center bg-sand dark:bg-espresso border border-accent/20 shadow-xl text-espresso dark:text-sand hover:scale-110 transition-transform"
@@ -137,7 +135,6 @@
                         {isDark ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
 
-                    {/* Hero Section */}
                     <header id="home" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-sand dark:bg-espresso px-6">
                         <div 
                           className="absolute inset-0 z-0 opacity-15 dark:opacity-20 bg-cover bg-center mix-blend-multiply dark:mix-blend-overlay grayscale pointer-events-none"
@@ -159,7 +156,6 @@
                         <div className="absolute bottom-24 right-24 w-32 h-32 border-r border-b border-accent/10 pointer-events-none" />
                     </header>
 
-                    {/* Origins Section */}
                     <section id="origins" className="py-24 border-b border-accent/10 px-6">
                         <div className="max-w-7xl mx-auto mb-16 text-center">
                             <h2 className="font-serif text-5xl md:text-7xl mb-4 font-black italic tracking-tight">Global Origins</h2>
@@ -206,7 +202,6 @@
                         </div>
                     </section>
 
-                    {/* Author Section */}
                     <section id="author" className="py-24 px-6 md:px-12">
                         <div onClick={() => window.open('https://www.amazon.com/Weight-Cloud-Other-Poems-ebook/dp/B0FXGLB1W7/', '_blank')} className="max-w-6xl mx-auto bg-accent text-espresso rounded-[3rem] p-10 md:p-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center cursor-pointer hover:bg-accent/90 transition-all group">
                             <div>
@@ -224,7 +219,6 @@
                         </div>
                     </section>
 
-                    {/* Writing Section */}
                     <section id="writing" className="py-24 px-6">
                         <div className="max-w-7xl mx-auto text-center">
                             <h2 className="font-serif text-5xl md:text-6xl mb-16">Publications</h2>
@@ -247,7 +241,6 @@
                         </div>
                     </section>
 
-                    {/* Notebook Section */}
                     <section id="notebook" className="py-24 px-6 bg-sand/5 dark:bg-white/5">
                         <div className="max-w-4xl mx-auto space-y-24">
                             <div className="text-center mb-16">
@@ -266,7 +259,6 @@
                         </div>
                     </section>
 
-                    {/* Media Section */}
                     <section id="interests" className="py-24 px-6">
                         <div className="max-w-7xl mx-auto">
                             <div className="text-center mb-16">
@@ -290,7 +282,6 @@
                         </div>
                     </section>
 
-                    {/* Sign Off Section */}
                     <section className="h-[80vh] flex flex-col items-center justify-center text-center px-6">
                         <blockquote className="font-serif italic text-3xl md:text-5xl lg:text-6xl max-w-5xl leading-tight">
                             "There is no passion to be found playing small – in settling for a life that is less than the one you are capable of living."
@@ -298,7 +289,6 @@
                         <p className="mt-8 font-extrabold tracking-widest text-accent text-lg uppercase tracking-[0.3em]">— NELSON MANDELA</p>
                     </section>
 
-                    {/* Footer */}
                     <footer className="relative bg-accent text-espresso py-24 px-6 md:px-12 overflow-hidden">
                         <div className="absolute bottom-[-10%] left-[-5%] text-[15rem] font-black opacity-[0.03] select-none pointer-events-none">2027</div>
                         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16 relative z-10">
@@ -317,7 +307,6 @@
                         </div>
                     </footer>
 
-                    {/* Modal for Region Details */}
                     {modalContent && (
                         <div className="fixed inset-0 z-[100] bg-espresso overflow-y-auto px-6 py-24 animate-fade-in flex items-center justify-center">
                             <button 
@@ -333,7 +322,6 @@
                         </div>
                     )}
 
-                    {/* Zero Cookie Banner */}
                     <div id="cookie-banner" className="fixed bottom-8 left-8 right-8 z-[100] md:left-auto md:w-auto">
                         <div className="bg-espresso dark:bg-sand text-sand dark:text-espresso p-4 md:px-8 md:py-4 rounded-full border border-neon flex flex-col md:flex-row items-center gap-4 shadow-2xl">
                             <span className="text-sm font-medium">🛡️ Aditya places Privacy First. This site uses zero cookies.</span>
@@ -352,8 +340,7 @@
             );
         };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
 </html>
