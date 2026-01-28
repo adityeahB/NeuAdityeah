@@ -1,338 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aditya Neil Banerjee | Creator</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;800&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
-    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              espresso: '#1a1614',
+              sand: '#f5f1ed',
+              accent: '#d4a373',
+              accentDark: '#bc6c25',
+              neon: '#ccff00',
+            },
+            fontFamily: {
+              serif: ['Playfair Display', 'serif'],
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Space Mono', 'monospace'],
+            },
+          },
+        },
+      };
+    </script>
     <style>
-        :root {
-            /* Espresso & Soft Sand Palette */
-            --bg: #1a1614; 
-            --text: #f5f1ed; 
-            --accent: #d4a373; 
-            --neon: #ccff00; 
-            --glass: rgba(255, 255, 255, 0.04);
-            --border: rgba(255, 255, 255, 0.12);
-            --float-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            /* DYNAMIC OVERLAY: Darker for Dark Mode */
-            --header-overlay: rgba(26, 22, 20, 0.85);
-            /* STEM Silhouette with Global Data */
-            --stem-art: url('https://images.unsplash.com/photo-1581591458630-9c768335606e?auto=format&fit=crop&w=1920&q=80');
-        }
-
-        [data-theme="light"] {
-            --bg: #f5f1ed;
-            --text: #2d241e;
-            --accent: #bc6c25;
-            --neon: #ccff00;
-            --glass: rgba(0, 0, 0, 0.03);
-            --border: rgba(0, 0, 0, 0.1);
-            --float-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            /* DYNAMIC OVERLAY: Lighter for Light Mode */
-            --header-overlay: rgba(245, 241, 237, 0.85);
-        }
-
-        * { box-sizing: border-box; }
-        a, button, .card, .country-card {
-    transition:
-        transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-        background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-        border-color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-        body { background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
-
-        /* --- NAVIGATION --- */
-        .hamburger { position: fixed; top: 30px; right: 30px; z-index: 10002; cursor: pointer; background: var(--glass); padding: 15px; border-radius: 50%; backdrop-filter: blur(10px); border: 1px solid var(--border); }
-        .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 10001; display: none; flex-direction: column; justify-content: center; align-items: center; }
-        .nav-overlay a { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--text); text-decoration: none; margin: 10px 0; }
-        .nav-overlay a:hover { color: var(--accent); font-style: italic; }
-
-        /* --- THEME TOGGLE (Fixed Typos) --- */
-        .theme-toggle { 
-            position: fixed; top: 30px; left: 30px; z-index: 10000; cursor: pointer; 
-            background: var(--text); color: var(--bg); 
-            width: 45px; height: 45px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid var(--accent); 
-        }
-
-        /* --- SECTIONS --- */
-        section { padding: 120px 40px; border-bottom: 1px solid var(--border); }
-
-        /* --- LANDING PAGE --- */
-  /* --- LANDING PAGE HEADER --- */
-header { 
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    background-image:
-        linear-gradient(var(--header-overlay), var(--header-overlay)),
-        url('https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=1920&q=80'); /* Nautilus shell */
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: scroll;
-    padding: 0 20px;
-}
-
-h1 {
-    font-family: 'Playfair Display', serif; 
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    line-height: 1.2; 
-    margin: 0; 
-    font-weight: 900;
-    color: var(--text);
-    text-shadow: 0 2px 10px rgba(0,0,0,0.25);
-    max-width: 1100px;
-}
-
-.header-name {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(1.5rem, 4vw, 2.5rem); 
-    margin-top: 20px;
-    font-weight: 300;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: clamp(2px, 1vw, 8px); 
-    text-align: center;
-    line-height: 1.2;
-}
-
-.header-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: clamp(0.9rem, 1.2vw, 1.2rem); 
-    opacity: 0.7;
-    letter-spacing: 2px;
-    margin-top: 10px;
-    text-align: center;
-    line-height: 1.4;
-}       
-        .header-name { font-family: 'Inter', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-top: 25px; font-weight: 300; color: var(--accent); text-transform: uppercase; letter-spacing: 8px; }
-        .header-tag { font-family: 'Space Mono', monospace; margin-top: 15px; font-size: 1rem; opacity: 0.6; letter-spacing: 2px; }
-
-        /* --- CENTERED GRID SYSTEM --- */
-        .grid-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; }
-        .countries-row { display: flex; gap: 30px; overflow-x: auto; padding: 40px 0; scrollbar-width: none; justify-content: center; width: 100%; }
-        .countries-row::-webkit-scrollbar { display: none; }
-        
-        .country-card { flex: 0 0 400px; background: var(--glass); border-radius: 40px; padding: 15px; border: 1px solid var(--border); cursor: pointer; position: relative; box-shadow: var(--float-shadow); }
-        .country-card img { width: 100%; height: 500px; object-fit: cover; border-radius: 30px; }
-        .country-card:hover { transform: translateY(-15px); }
-
-        .card { background: var(--glass); border-radius: 40px; padding: 25px; border: 1px solid var(--border); cursor: pointer; width: 400px; box-shadow: var(--float-shadow); }
-        .card:hover { transform: translateY(-20px); background: rgba(255, 255, 255, 0.08); border-color: var(--accent); }
-        .card img { width: 100%; height: 400px; object-fit: cover; border-radius: 30px; margin-bottom: 20px; }
-
-        .pub-name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 800; margin-bottom: 8px; display: block; }
-        .article-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 0; line-height: 1.1; }
-        .nyt-neon { background: var(--neon); color: #000; padding: 4px 12px; display: inline-block; font-weight: 900; font-size: 0.9rem; margin-bottom: 15px; border-radius: 2px; transform: rotate(-1deg); }
-
-        /* --- BOOK BLOCK --- */
-        .book-block { max-width: 1200px; margin: 0 auto; background: var(--accent); color: #000; border-radius: 50px; padding: 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; cursor: pointer; box-shadow: var(--float-shadow); }
-        .book-block h2 { font-family: 'Playfair Display', serif; font-size: 4.5rem; margin: 0; line-height: 0.9; }
-        .book-cover-img { width: 100%; max-width: 350px; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); justify-self: center; }
-
-        /* --- MUSINGS --- */
-        .musing-item { max-width: 800px; margin: 0 auto 100px; font-family: 'Space Mono', monospace; border-left: 4px solid var(--neon); padding-left: 40px; }
-        .musing-item h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-top: 0; color: var(--accent); font-style: italic; }
-
-        /* --- SIGN OFF & FOOTER --- */
-        .sign-off { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; }
-        .sign-off blockquote { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); max-width: 1000px; font-style: italic; line-height: 1.2; }
-
-        footer { padding: 120px 40px; background: var(--accent); color: #000; position: relative; overflow: hidden; }
-        .footer-bg-text { position: absolute; font-size: 20rem; font-weight: 900; opacity: 0.05; bottom: -50px; left: -20px; white-space: nowrap; pointer-events: none; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; justify-content: center; }
-        .footer-logo { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 0.9; font-weight: 900; letter-spacing: -2px; }
-        .contact-pill { display: inline-block; padding: 15px 30px; border: 2px solid #000; border-radius: 50px; text-decoration: none; color: #000; font-weight: 800; margin-top: 20px; }
-        .legal-block { font-family: 'Space Mono', monospace; font-size: 0.65rem; line-height: 1.6; opacity: 0.8; }
-
-        #cookie-banner { position: fixed; bottom: 30px; left: 30px; right: 30px; background: #000; color: #fff; padding: 20px 40px; border-radius: 100px; z-index: 10005; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; border: 1px solid var(--neon); }
-
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 20000; padding: 80px 40px; overflow-y: auto; }
-        .modal-content { max-width: 800px; margin: 0 auto; }
-        .modal-content h2 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--accent); }
-        .close-modal {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: 800;
-    color: var(--accent);
-}
+      body { transition: background-color 0.5s ease, color 0.5s ease; scroll-behavior: smooth; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
     </style>
-</head>
-<body>
-
-<div class="hamburger" onclick="toggleNav()">☰</div>
-<div class="nav-overlay" id="navOverlay">
-    <span style="position:fixed; top:30px; right:30px; font-size:2rem; cursor:pointer;" onclick="toggleNav()">✕</span>
-    <a href="#home" onclick="toggleNav()">Home</a>
-    <a href="#cultures" onclick="toggleNav()">Origins</a>
-    <a href="#book" onclick="toggleNav()">Author</a>
-    <a href="#writing" onclick="toggleNav()">Writing</a>
-    <a href="#musings" onclick="toggleNav()">Notebook</a>
-    <a href="#interests" onclick="toggleNav()">Media</a>
-</div>
-
-<div class="theme-toggle" onclick="toggleTheme()">
-    <svg id="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-</div>
-
-<header id="home">
-    <h1>Creative instincts // STEM brain // Global firmware</h1>
-    <div class="header-name">Aditya Neil Banerjee</div>
-    <div class="header-tag">Class of 2027 // v4.0 // Adaptive</div>
-</header>
-
-<section id="cultures">
-    <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 0; text-align: center;">Global Origins</h2>
-    <div class="countries-row">
-        <div class="country-card" onclick="openPop('India', 'Heritage is an internal compass. For me, India is a lesson in resilience and the sheer power of human density. It informs my belief that no system is too complex to be understood, provided you know where the pulse is.')">
-            <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&w=800&q=80" alt="India">
-            <span class="pub-name">Legacy</span>
-            <h3 class="article-title">India</h3>
-        </div>
-        <div class="country-card" onclick="openPop('Brazil', 'Brazil taught me about the conversation between light and concrete. My childhood wasn’t spent in the rainforest; it was spent in a culture that treats design as a living, breathing social force.')">
-            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80" alt="Brazil">
-            <span class="pub-name">Rhythm</span>
-            <h3 class="article-title">Brazil</h3>
-        </div>
-        <div class="country-card" onclick="openPop('USA', 'The United States is my intellectual training ground. Spent within American schools, my perspective is framed by the constant pursuit of the next big question.')">
-            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=800&q=80" alt="USA">
-            <span class="pub-name">Intellect</span>
-            <h3 class="article-title">USA</h3>
-        </div>
-        <div class="country-card" onclick="openPop('Portugal', 'Portugal is the stage for my adulthood. It is where traditional cobblestones meet the digital frontier.')">
-            <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=800&q=80" alt="Portugal">
-            <span class="pub-name">Current</span>
-            <h3 class="article-title">Portugal</h3>
-        </div>
-    </div>
-</section>
-
-<section id="book">
-    <div class="book-block" onclick="window.open('https://www.amazon.com/Weight-Cloud-Other-Poems-ebook/dp/B0FXGLB1W7/', '_blank')">
-        <div>
-            <div style="background: #000; color: #fff; padding: 5px 15px; border-radius: 20px; display: inline-block; font-size: 0.8rem; margin-bottom: 20px;">PUBLISHED COLLECTION</div>
-            <h2>THE WEIGHT OF A CLOUD</h2>
-            <p style="font-size: 1.3rem; margin-top: 20px; line-height: 1.5;">My debut poetry collection. An exploration of home, identity, and the ephemeral moments in between.</p>
-        </div>
-        <img src="https://m.media-amazon.com/images/I/81LFuBnVh6L._SL1500_.jpg" class="book-cover-img" alt="The Weight of a Cloud Book Cover">
-    </div>
-</section>
-
-<section id="writing">
-    <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 60px; text-align: center;">Publications</h2>
-    <div class="grid-container">
-        <div class="card" onclick="window.open('https://www.nytimes.com/2025/05/15/learning/how-to-be-a-stargazer.html', '_blank')">
-            <div class="nyt-neon">NEW YORK TIMES</div>
-            <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=800&q=80" alt="Stars">
-            <span class="pub-name">Guest Perspective</span>
-            <h3 class="article-title">How to be a Stargazer</h3>
-        </div>
-        <div class="card" onclick="window.open('https://ohsobserver.com/overwhelmed/', '_blank')">
-            <img src="https://ohsobserver.com/wp-content/uploads/2025/05/overwhelmed.png" alt="Overwhelmed">
-            <span class="pub-name">Stanford OHS Observer</span>
-            <h3 class="article-title">Overwhelmed</h3>
-        </div>
-        <div class="card" onclick="window.open('https://ohsobserver.com/rent-control-will-it-work/', '_blank')">
-            <img src="https://ohsobserver.com/wp-content/uploads/2026/01/rent.png" alt="Rent">
-            <span class="pub-name">Stanford OHS Observer</span>
-            <h3 class="article-title">The Rent Question</h3>
-        </div>
-    </div>
-</section>
-
-<section id="musings">
-    <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 80px; text-align:center;">The Unscripted Lab</h2>
-    <div class="musing-item">
-        <h3>The AI-Leisure Trap</h3>
-        <p>In 2026, AI was meant to save us time. Instead, it’s raised the ceiling for production. We are in a race to the bottom of the attention span.</p>
-    </div>
-    <div class="musing-item">
-        <h3>Post-Global Identity</h3>
-        <p>Globalization failed to provide a sense of belonging. We are desperate to define exactly which border we stand behind.</p>
-    </div>
-</section>
-
-<section id="interests">
-    <h2 style="font-family:'Playfair Display'; font-size: 3.5rem; margin-bottom: 60px; text-align: center;">Sound & Vision</h2>
-    <div class="grid-container">
-        <div class="card" onclick="window.open('https://open.spotify.com/playlist/7K3scENpOi7ZPZUHfnfic3?si=qH_vBuN8Q0qQQbx3ife_Jw', '_blank')">
-            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=80" alt="Music">
-            <span class="pub-name">Spotify Curation</span>
-            <h3 class="article-title">Soundscapes</h3>
-        </div>
-        <div class="card" onclick="window.open('https://www.nga.gov/artwork-search?download=1', '_blank')">
-            <img src="https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?auto=format&fit=crop&w=800&q=80" alt="Photography">
-            <span class="pub-name">NGA Archive</span>
-            <h3 class="article-title">Photography Archive</h3>
-        </div>
-    </div>
-</section>
-
-<section class="sign-off">
-    <blockquote > "There is no passion to be found playing small – in settling for a life that is less than the one you are capable of living."</blockquote>
-    <p style="margin-top: 30px; font-weight: 800; color: var(--accent);">— NELSON MANDELA</p>
-</section>
-
-<footer>
-    <div class="footer-bg-text">2027</div>
-    <div class="footer-grid">
-        <div>
-            <div class="footer-logo">ADITYA<br>NEIL<br>BANERJEE</div>
-            <p style="margin-top: 20px; font-weight: 800;">Class of 2027</p>
-        </div>
-        <div>
-            <h3>Contact</h3>
-            <p>Aditya Neil Banerjee</p>
-            <a href="mailto:me@aditya.pt" class="contact-pill">me@aditya.pt</a>
-        </div>
-        <div class="legal-block">
-            <p style="font-weight: bold; color: #000; margin-bottom: 5px;">LGPD/GDPR COMPLIANT</p>
-            <p>Built with intention. No cookies, no tracking. <br>All rights reserved 2008-2026.</p>
-        </div>
-    </div>
-</footer>
-
-<div id="cookie-banner">
-    <span>🛡️ Aditya places Privacy First. This site uses zero cookies. LGPD Compliant.</span>
-    <button style="background:var(--neon); color:#000; border:none; padding:10px 20px; border-radius:30px; cursor:pointer; font-weight:900;" onclick="document.getElementById('cookie-banner').style.display='none'">UNDERSTOOD</button>
-</div>
-
-<div id="popout" class="modal">
-    <span class="close-modal" onclick="closePop()">✕ CLOSE</span>
-    <div class="modal-content">
-        <h2 id="pTitle"></h2>
-        <p id="pBody" style="font-size: 1.6rem; line-height: 1.8;"></p>
-    </div>
-</div>
-
-<script>
-    function toggleNav() {
-        const nav = document.getElementById('navOverlay');
-        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    }
-    function toggleTheme() {
-        const doc = document.documentElement;
-        doc.setAttribute('data-theme', doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    }
-    function openPop(title, body) {
-        document.getElementById('pTitle').innerText = title;
-        document.getElementById('pBody').innerText = body;
-        document.getElementById('popout').style.display = 'block';
-    }
-    function closePop() { document.getElementById('popout').style.display = 'none'; }
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
 </script>
-
+</head>
+<body class="bg-sand text-espresso dark:bg-espresso dark:text-sand font-sans overflow-x-hidden">
+    <div id="root"></div>
 </body>
 </html>
