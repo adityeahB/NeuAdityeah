@@ -1,139 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aditya Neil Banerjee | Creator</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              espresso: '#1a1614',
-              sand: '#f5f1ed',
-              accent: '#d4a373',
-              accentDark: '#bc6c25',
-              neon: '#ccff00',
-            },
-            fontFamily: {
-              serif: ['Playfair Display', 'serif'],
-              sans: ['Inter', 'sans-serif'],
-              mono: ['Space Mono', 'monospace'],
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      body { transition: background-color 0.5s ease, color 0.5s ease; scroll-behavior: smooth; }
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-      .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aditya Neil Banerjee | Creator</title>
 
-    <!-- React + ReactDOM + Babel + Lucide -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/lucide@0.263.0/dist/lucide.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<!-- Lucide Icons -->
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.264.0/dist/lucide.min.js"></script>
+
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          espresso: '#1a1614',
+          sand: '#f5f1ed',
+          accent: '#d4a373',
+          accentDark: '#bc6c25',
+          neon: '#ccff00',
+        },
+        fontFamily: {
+          serif: ['Playfair Display', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          mono: ['Space Mono', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  body { transition: background-color 0.5s ease, color 0.5s ease; scroll-behavior: smooth; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
+</style>
+
+<!-- React + ReactDOM + Babel -->
+<script src="https://esm.sh/react@19.2.4?bundle"></script>
+<script src="https://esm.sh/react-dom@19.2.4?bundle"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
 </head>
 <body class="bg-sand text-espresso dark:bg-espresso dark:text-sand font-sans overflow-x-hidden">
-    <div id="root"></div>
+<div id="root"></div>
 
-    <!-- Your React Code, converted to browser-friendly JS -->
-    <script type="text/babel">
+<script type="text/babel">
 
-      const { useState, useEffect } = React;
-      const { Menu, X, Sun, Moon, ArrowUpRight, ExternalLink } = lucide;
+const { useState, useEffect } = React;
+const { createRoot } = ReactDOM;
 
-      const App = () => {
-          const [isDark, setIsDark] = useState(false);
-          const [isMenuOpen, setIsMenuOpen] = useState(false);
-          const [modalContent, setModalContent] = useState(null);
+const App = () => {
+  const [isDark, setIsDark] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
-          useEffect(() => {
-              if (isDark) document.documentElement.classList.add('dark');
-              else document.documentElement.classList.remove('dark');
-          }, [isDark]);
+  useEffect(() => {
+    if (isDark) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
+  }, [isDark]);
 
-          const toggleTheme = () => setIsDark(!isDark);
-          const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleTheme = () => setIsDark(!isDark);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-          const nautilusImage = "https://images.unsplash.com/photo-1544322497-293672922619?auto=format&fit=crop&q=80&w=2000";
+  const nautilusImage = "https://images.unsplash.com/photo-1544322497-293672922619?auto=format&fit=crop&q=80&w=2000";
 
-          return (
-              <div className="min-h-screen transition-colors duration-500 bg-sand dark:bg-espresso text-espresso dark:text-sand">
-                  
-                  {/* Navigation Toggle */}
-                  <button 
-                      onClick={toggleMenu} 
-                      className="fixed top-8 right-8 z-[70] w-12 h-12 rounded-full flex items-center justify-center bg-sand/10 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-lg text-current hover:scale-110 transition-transform"
-                      aria-label="Toggle Navigation"
-                  >
-                      {isMenuOpen ? <X /> : <Menu />}
-                  </button>
+  const lucideIcons = {
+    Menu: () => lucide.Menu({ size: 24 }),
+    X: () => lucide.X({ size: 24 }),
+    Sun: () => lucide.Sun({ size: 20 }),
+    Moon: () => lucide.Moon({ size: 20 }),
+    ExternalLink: () => lucide.ExternalLink({ size: 18 })
+  };
 
-                  {/* Nav Overlay */}
-                  <nav className={`fixed inset-0 z-[65] flex flex-col items-center justify-center bg-sand dark:bg-espresso transition-transform duration-700 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-                      <div className="flex flex-col items-center gap-8">
-                          {['Home', 'Origins', 'Author', 'Writing', 'Notebook', 'Media'].map((label) => (
-                              <a 
-                                  key={label} 
-                                  href={`#${label.toLowerCase() === 'media' ? 'interests' : label.toLowerCase()}`} 
-                                  onClick={() => setIsMenuOpen(false)} 
-                                  className="font-serif text-5xl md:text-7xl hover:text-accent hover:italic transition-all"
-                              >
-                                  {label}
-                              </a>
-                          ))}
-                      </div>
-                  </nav>
+  return (
+    <div className="min-h-screen transition-colors duration-500 bg-sand dark:bg-espresso text-espresso dark:text-sand">
+      
+      {/* Navigation Toggle */}
+      <button 
+        onClick={toggleMenu} 
+        className="fixed top-8 right-8 z-[70] w-12 h-12 rounded-full flex items-center justify-center bg-sand/10 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-lg text-current hover:scale-110 transition-transform"
+        aria-label="Toggle Navigation"
+      >
+        {isMenuOpen ? <lucideIcons.X /> : <lucideIcons.Menu />}
+      </button>
 
-                  {/* Theme Toggle */}
-                  <button 
-                      onClick={toggleTheme} 
-                      className="fixed top-8 left-8 z-[60] w-11 h-11 rounded-full flex items-center justify-center bg-sand dark:bg-espresso border border-accent/20 shadow-xl text-espresso dark:text-sand hover:scale-110 transition-transform"
-                      aria-label="Toggle Theme"
-                  >
-                      {isDark ? <Sun /> : <Moon />}
-                  </button>
+      {/* Nav Overlay */}
+      <nav className={`fixed inset-0 z-[65] flex flex-col items-center justify-center bg-sand dark:bg-espresso transition-transform duration-700 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className="flex flex-col items-center gap-8">
+          {['Home', 'Origins', 'Author', 'Writing', 'Notebook', 'Media'].map((label) => (
+            <a 
+              key={label} 
+              href={`#${label.toLowerCase() === 'media' ? 'interests' : label.toLowerCase()}`} 
+              onClick={() => setIsMenuOpen(false)} 
+              className="font-serif text-5xl md:text-7xl hover:text-accent hover:italic transition-all"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      </nav>
 
-                  {/* Hero Section */}
-                  <header id="home" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-sand dark:bg-espresso px-6">
-                      <div 
-                        className="absolute inset-0 z-0 opacity-15 dark:opacity-20 bg-cover bg-center mix-blend-multiply dark:mix-blend-overlay grayscale pointer-events-none"
-                        style={{ backgroundImage: `url(${nautilusImage})` }}
-                      />
-                      <div className="relative z-10 w-full max-w-7xl mx-auto">
-                          <h1 className="font-serif text-[clamp(0.7rem,3.4vw,5.5rem)] font-black leading-none tracking-tighter mb-12 uppercase animate-fade-in whitespace-nowrap block w-full">
-                              Creative instincts <span className="text-accent italic opacity-80">//</span> STEM brain <span className="text-accent italic opacity-80">//</span> Global firmware
-                          </h1>
-                          <div className="flex flex-col items-center">
-                              <div className="h-px w-32 bg-accent/30 mb-8" />
-                              <h2 className="font-sans text-2xl md:text-4xl font-light uppercase tracking-[0.4em] text-accent mb-4">Aditya Neil Banerjee</h2>
-                              <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] opacity-40">Class of 2027 // v4.0 // Adaptive</p>
-                          </div>
-                      </div>
-                      <div className="absolute top-24 left-24 w-32 h-32 border-l border-t border-accent/10 pointer-events-none" />
-                      <div className="absolute bottom-24 right-24 w-32 h-32 border-r border-b border-accent/10 pointer-events-none" />
-                  </header>
+      {/* Theme Toggle */}
+      <button 
+        onClick={toggleTheme} 
+        className="fixed top-8 left-8 z-[60] w-11 h-11 rounded-full flex items-center justify-center bg-sand dark:bg-espresso border border-accent/20 shadow-xl text-espresso dark:text-sand hover:scale-110 transition-transform"
+        aria-label="Toggle Theme"
+      >
+        {isDark ? <lucideIcons.Sun /> : <lucideIcons.Moon />}
+      </button>
 
-                  {/* All other sections (Origins, Author, Writing, Notebook, Media, Sign-off, Footer, Modal, Cookie Banner) */}
-                  {/* Copy all JSX exactly as in your original TSX code, replacing TypeScript types with plain JS. */}
-                  {/* Example for modalContent state: remove TypeScript `{ title: string ... }` */}
+      {/* Hero Section */}
+      <header id="home" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-sand dark:bg-espresso px-6">
+        <div 
+          className="absolute inset-0 z-0 opacity-15 dark:opacity-20 bg-cover bg-center mix-blend-multiply dark:mix-blend-overlay grayscale pointer-events-none"
+          style={{ backgroundImage: `url(${nautilusImage})` }}
+        />
+        <div className="relative z-10 w-full max-w-7xl mx-auto">
+          <h1 className="font-serif text-[clamp(0.7rem,3.4vw,5.5rem)] font-black leading-none tracking-tighter mb-12 uppercase animate-fade-in whitespace-nowrap block w-full">
+            Creative instincts <span className="text-accent italic opacity-80">//</span> STEM brain <span className="text-accent italic opacity-80">//</span> Global firmware
+          </h1>
+          <div className="flex flex-col items-center">
+            <div className="h-px w-32 bg-accent/30 mb-8" />
+            <h2 className="font-sans text-2xl md:text-4xl font-light uppercase tracking-[0.4em] text-accent mb-4">Aditya Neil Banerjee</h2>
+            <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] opacity-40">Class of 2027 // v4.0 // Adaptive</p>
+          </div>
+        </div>
+        <div className="absolute top-24 left-24 w-32 h-32 border-l border-t border-accent/10 pointer-events-none" />
+        <div className="absolute bottom-24 right-24 w-32 h-32 border-r border-b border-accent/10 pointer-events-none" />
+      </header>
 
-                  {/* …Paste all sections here, exactly as in your original code… */}
+      {/* The rest of your original sections (Origins, Author, Writing, Notebook, Media, Footer, Modal, Cookie Banner) */}
+      {/* For brevity, you can include them as-is, replacing JSX types with plain JS objects and using lucideIcons for all icons */}
+      
+      {/* Modal Example */}
+      {modalContent && (
+        <div className="fixed inset-0 z-[100] bg-espresso overflow-y-auto px-6 py-24 animate-fade-in flex items-center justify-center">
+          <button 
+            onClick={() => setModalContent(null)} 
+            className="fixed top-8 right-8 text-accent flex items-center gap-2 font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform"
+          >
+            <lucideIcons.X /><span>Close</span>
+          </button>
+          <div className="max-w-3xl mx-auto text-sand">
+            <h2 className="font-serif text-6xl italic text-accent mb-12">{modalContent.title}</h2>
+            <p className="text-xl md:text-3xl font-light leading-relaxed">{modalContent.body}</p>
+          </div>
+        </div>
+      )}
 
-              </div>
-          );
-      };
+    </div>
+  );
+};
 
-      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const container = document.getElementById('root');
+if (container) {
+  const root = createRoot(container);
+  root.render(<App />);
+}
 
-    </script>
+</script>
 </body>
 </html>
