@@ -1,172 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aditya Neil Banerjee | Creator</title>
-
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
-<!-- Lucide Icons -->
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.264.0/dist/lucide.min.js"></script>
-
-<script>
-  tailwind.config = {
-    darkMode: 'class',
-    theme: {
-      extend: {
-        colors: {
-          espresso: '#1a1614',
-          sand: '#f5f1ed',
-          accent: '#d4a373',
-          accentDark: '#bc6c25',
-          neon: '#ccff00',
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aditya Neil Banerjee | Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              espresso: '#1a1614',
+              sand: '#f5f1ed',
+              accent: '#d4a373',
+              accentDark: '#bc6c25',
+              neon: '#ccff00',
+            },
+            fontFamily: {
+              serif: ['Playfair Display', 'serif'],
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Space Mono', 'monospace'],
+            },
+          },
         },
-        fontFamily: {
-          serif: ['Playfair Display', 'serif'],
-          sans: ['Inter', 'sans-serif'],
-          mono: ['Space Mono', 'monospace'],
-        },
-      },
-    },
-  };
-</script>
-
-<style>
-  body { transition: background-color 0.5s ease, color 0.5s ease; scroll-behavior: smooth; }
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
-</style>
-
-<!-- React + ReactDOM + Babel -->
-<script src="https://esm.sh/react@19.2.4?bundle"></script>
-<script src="https://esm.sh/react-dom@19.2.4?bundle"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
+      };
+      // Suppress Tailwind CDN warning
+      const originalWarn = console.warn;
+      console.warn = function(msg) {
+        if (typeof msg === 'string' && msg.includes('cdn.tailwindcss.com')) return;
+        originalWarn.apply(console, arguments);
+      };
+    </script>
+    <style>
+      body { transition: background-color 0.5s ease, color 0.5s ease; scroll-behavior: smooth; }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      @keyframes fade-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
+    </style>
 </head>
 <body class="bg-sand text-espresso dark:bg-espresso dark:text-sand font-sans overflow-x-hidden">
-<div id="root"></div>
+    <div id="root"></div>
+    
+    <script type="module">
+        import React from 'https://esm.sh/react@18.3.1';
+        import ReactDOM from 'https://esm.sh/react-dom@18.3.1/client';
+        
+        const { useState, useEffect } = React;
+        const e = React.createElement;
 
-<script type="text/babel">
+        // Import Lucide icons
+        const iconModule = await import('https://esm.sh/lucide-react@0.263.1');
+        const { Menu, X, Sun, Moon, ExternalLink } = iconModule;
 
-const { useState, useEffect } = React;
-const { createRoot } = ReactDOM;
+        const App = () => {
+            const [isDark, setIsDark] = useState(false);
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [modalContent, setModalContent] = useState(null);
 
-const App = () => {
-  const [isDark, setIsDark] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
+            useEffect(() => {
+                if (isDark) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+            }, [isDark]);
 
-  useEffect(() => {
-    if (isDark) document.documentElement.classList.add('dark');
-    else document.documentElement.classList.remove('dark');
-  }, [isDark]);
+            const toggleTheme = () => setIsDark(!isDark);
+            const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const toggleTheme = () => setIsDark(!isDark);
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+            const nautilusImage = "https://images.unsplash.com/photo-1544322497-293672922619?auto=format&fit=crop&q=80&w=2000";
 
-  const nautilusImage = "https://images.unsplash.com/photo-1544322497-293672922619?auto=format&fit=crop&q=80&w=2000";
+            const regions = [
+                {
+                    title: 'Brazil',
+                    label: 'Rhythm',
+                    image: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&q=80&w=1000',
+                    body: 'Brazil taught me about the conversation between light and concrete. My childhood spent in a culture that treats design as a living, breathing social force.'
+                },
+                {
+                    title: 'USA',
+                    label: 'Intellect',
+                    image: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1000&auto=format&fit=crop',
+                    body: 'The United States is my intellectual training ground. Spent within American schools, my perspective is framed by the constant pursuit of the next big question.'
+                },
+                {
+                    title: 'Portugal',
+                    label: 'Current',
+                    image: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?q=80&w=1000&auto=format&fit=crop',
+                    body: 'Portugal is the stage for my adulthood. It is where traditional cobblestones meet the digital frontier.'
+                },
+                {
+                    title: 'India',
+                    label: 'Legacy',
+                    image: 'https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&q=80&w=1000',
+                    body: 'Heritage is an internal compass. For me, India is a lesson in resilience and the sheer power of human density. It informs my belief that no system is too complex to be understood, provided you know where the pulse is.'
+                }
+            ];
 
-  const lucideIcons = {
-    Menu: () => lucide.Menu({ size: 24 }),
-    X: () => lucide.X({ size: 24 }),
-    Sun: () => lucide.Sun({ size: 20 }),
-    Moon: () => lucide.Moon({ size: 20 }),
-    ExternalLink: () => lucide.ExternalLink({ size: 18 })
-  };
+            const publications = [
+                { outlet: 'NEW YORK TIMES', title: 'How to be a Stargazer', image: 'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=1000', href: 'https://www.nytimes.com/2025/05/15/learning/how-to-be-a-stargazer.html', ny: true },
+                { outlet: 'Stanford OHS Observer', title: 'Overwhelmed', image: 'https://ohsobserver.com/wp-content/uploads/2025/05/overwhelmed.png', href: 'https://ohsobserver.com/overwhelmed/' },
+                { outlet: 'Stanford OHS Observer', title: 'The Rent Question', image: 'https://ohsobserver.com/wp-content/uploads/2026/01/rent.png', href: 'https://ohsobserver.com/rent-control-will-it-work/' }
+            ];
 
-  return (
-    <div className="min-h-screen transition-colors duration-500 bg-sand dark:bg-espresso text-espresso dark:text-sand">
-      
-      {/* Navigation Toggle */}
-      <button 
-        onClick={toggleMenu} 
-        className="fixed top-8 right-8 z-[70] w-12 h-12 rounded-full flex items-center justify-center bg-sand/10 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-lg text-current hover:scale-110 transition-transform"
-        aria-label="Toggle Navigation"
-      >
-        {isMenuOpen ? <lucideIcons.X /> : <lucideIcons.Menu />}
-      </button>
+            const notes = [
+                { title: 'The AI-Leisure Trap', text: 'In 2026, AI was meant to save us time. Instead, it's raised the ceiling for production. We are in a race to the bottom of the attention span.' },
+                { title: 'Post-Global Identity', text: 'Globalization failed to provide a sense of belonging. We are desperate to define exactly which border we stand behind.' }
+            ];
 
-      {/* Nav Overlay */}
-      <nav className={`fixed inset-0 z-[65] flex flex-col items-center justify-center bg-sand dark:bg-espresso transition-transform duration-700 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="flex flex-col items-center gap-8">
-          {['Home', 'Origins', 'Author', 'Writing', 'Notebook', 'Media'].map((label) => (
-            <a 
-              key={label} 
-              href={`#${label.toLowerCase() === 'media' ? 'interests' : label.toLowerCase()}`} 
-              onClick={() => setIsMenuOpen(false)} 
-              className="font-serif text-5xl md:text-7xl hover:text-accent hover:italic transition-all"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-      </nav>
+            const mediaItems = [
+                { title: 'Soundscapes', label: 'Spotify Curation', image: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000', href: 'https://open.spotify.com/playlist/7K3scENpOi7ZPZUHfnfic3' },
+                { title: 'Photography Archive', label: 'NGA Archive', image: 'https://images.unsplash.com/photo-1452723312111-3a7d0db0e024?q=80&w=1000', href: 'https://www.nga.gov' }
+            ];
 
-      {/* Theme Toggle */}
-      <button 
-        onClick={toggleTheme} 
-        className="fixed top-8 left-8 z-[60] w-11 h-11 rounded-full flex items-center justify-center bg-sand dark:bg-espresso border border-accent/20 shadow-xl text-espresso dark:text-sand hover:scale-110 transition-transform"
-        aria-label="Toggle Theme"
-      >
-        {isDark ? <lucideIcons.Sun /> : <lucideIcons.Moon />}
-      </button>
+            return e('div', { className: "min-h-screen transition-colors duration-500 bg-sand dark:bg-espresso text-espresso dark:text-sand" },
+                // Navigation Toggle Button
+                e('button', {
+                    onClick: toggleMenu,
+                    className: "fixed top-8 right-8 z-[70] w-12 h-12 rounded-full flex items-center justify-center bg-sand/10 dark:bg-white/5 backdrop-blur-md border border-white/10 shadow-lg text-current hover:scale-110 transition-transform",
+                    'aria-label': "Toggle Navigation"
+                }, isMenuOpen ? e(X, { size: 24 }) : e(Menu, { size: 24 })),
 
-      {/* Hero Section */}
-      <header id="home" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-sand dark:bg-espresso px-6">
-        <div 
-          className="absolute inset-0 z-0 opacity-15 dark:opacity-20 bg-cover bg-center mix-blend-multiply dark:mix-blend-overlay grayscale pointer-events-none"
-          style={{ backgroundImage: `url(${nautilusImage})` }}
-        />
-        <div className="relative z-10 w-full max-w-7xl mx-auto">
-          <h1 className="font-serif text-[clamp(0.7rem,3.4vw,5.5rem)] font-black leading-none tracking-tighter mb-12 uppercase animate-fade-in whitespace-nowrap block w-full">
-            Creative instincts <span className="text-accent italic opacity-80">//</span> STEM brain <span className="text-accent italic opacity-80">//</span> Global firmware
-          </h1>
-          <div className="flex flex-col items-center">
-            <div className="h-px w-32 bg-accent/30 mb-8" />
-            <h2 className="font-sans text-2xl md:text-4xl font-light uppercase tracking-[0.4em] text-accent mb-4">Aditya Neil Banerjee</h2>
-            <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] opacity-40">Class of 2027 // v4.0 // Adaptive</p>
-          </div>
-        </div>
-        <div className="absolute top-24 left-24 w-32 h-32 border-l border-t border-accent/10 pointer-events-none" />
-        <div className="absolute bottom-24 right-24 w-32 h-32 border-r border-b border-accent/10 pointer-events-none" />
-      </header>
+                // Nav Overlay
+                e('nav', {
+                    className: `fixed inset-0 z-[65] flex flex-col items-center justify-center bg-sand dark:bg-espresso transition-transform duration-700 ease-in-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`
+                },
+                    e('div', { className: "flex flex-col items-center gap-8" },
+                        ['Home', 'Origins', 'Author', 'Writing', 'Notebook', 'Media'].map(label =>
+                            e('a', {
+                                key: label,
+                                href: `#${label.toLowerCase() === 'media' ? 'interests' : label.toLowerCase()}`,
+                                onClick: () => setIsMenuOpen(false),
+                                className: "font-serif text-5xl md:text-7xl hover:text-accent hover:italic transition-all"
+                            }, label)
+                        )
+                    )
+                ),
 
-      {/* The rest of your original sections (Origins, Author, Writing, Notebook, Media, Footer, Modal, Cookie Banner) */}
-      {/* For brevity, you can include them as-is, replacing JSX types with plain JS objects and using lucideIcons for all icons */}
-      
-      {/* Modal Example */}
-      {modalContent && (
-        <div className="fixed inset-0 z-[100] bg-espresso overflow-y-auto px-6 py-24 animate-fade-in flex items-center justify-center">
-          <button 
-            onClick={() => setModalContent(null)} 
-            className="fixed top-8 right-8 text-accent flex items-center gap-2 font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform"
-          >
-            <lucideIcons.X /><span>Close</span>
-          </button>
-          <div className="max-w-3xl mx-auto text-sand">
-            <h2 className="font-serif text-6xl italic text-accent mb-12">{modalContent.title}</h2>
-            <p className="text-xl md:text-3xl font-light leading-relaxed">{modalContent.body}</p>
-          </div>
-        </div>
-      )}
+                // Theme Toggle
+                e('button', {
+                    onClick: toggleTheme,
+                    className: "fixed top-8 left-8 z-[60] w-11 h-11 rounded-full flex items-center justify-center bg-sand dark:bg-espresso border border-accent/20 shadow-xl text-espresso dark:text-sand hover:scale-110 transition-transform",
+                    'aria-label': "Toggle Theme"
+                }, isDark ? e(Sun, { size: 20 }) : e(Moon, { size: 20 })),
 
-    </div>
-  );
-};
+                // Hero Section
+                e('header', { id: "home", className: "relative h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-sand dark:bg-espresso px-6" },
+                    e('div', {
+                        className: "absolute inset-0 z-0 opacity-15 dark:opacity-20 bg-cover bg-center mix-blend-multiply dark:mix-blend-overlay grayscale pointer-events-none",
+                        style: { backgroundImage: `url(${nautilusImage})` }
+                    }),
+                    e('div', { className: "relative z-10 w-full max-w-7xl mx-auto" },
+                        e('h1', { className: "font-serif text-[clamp(0.7rem,3.4vw,5.5rem)] font-black leading-none tracking-tighter mb-12 uppercase animate-fade-in whitespace-nowrap block w-full" },
+                            'Creative instincts ',
+                            e('span', { className: "text-accent italic opacity-80" }, '//'),
+                            ' STEM brain ',
+                            e('span', { className: "text-accent italic opacity-80" }, '//'),
+                            ' Global firmware'
+                        ),
+                        e('div', { className: "flex flex-col items-center" },
+                            e('div', { className: "h-px w-32 bg-accent/30 mb-8" }),
+                            e('h2', { className: "font-sans text-2xl md:text-4xl font-light uppercase tracking-[0.4em] text-accent mb-4" }, 'Aditya Neil Banerjee'),
+                            e('p', { className: "font-mono text-xs md:text-sm uppercase tracking-[0.2em] opacity-40" }, 'Class of 2027 // v4.0 // Adaptive')
+                        )
+                    ),
+                    e('div', { className: "absolute top-24 left-24 w-32 h-32 border-l border-t border-accent/10 pointer-events-none" }),
+                    e('div', { className: "absolute bottom-24 right-24 w-32 h-32 border-r border-b border-accent/10 pointer-events-none" })
+                ),
 
-const container = document.getElementById('root');
-if (container) {
-  const root = createRoot(container);
-  root.render(<App />);
-}
+                // Origins Section
+                e('section', { id: "origins", className: "py-24 border-b border-accent/10 px-6" },
+                    e('div', { className: "max-w-7xl mx-auto mb-16 text-center" },
+                        e('h2', { className: "font-serif text-5xl md:text-7xl mb-4 font-black italic tracking-tight" }, 'Global Origins'),
+                        e('p', { className: "font-mono text-xs opacity-50 uppercase tracking-[0.3em]" }, 'The Firmware of Identity')
+                    ),
+                    e('div', { className: "max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" },
+                        regions.map(region =>
+                            e('div', { key: region.title, onClick: () => setModalContent(region), className: "group cursor-pointer" },
+                                e('div', { className: "relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-xl transition-all duration-500 group-hover:-translate-y-4 group-hover:shadow-2xl" },
+                                    e('img', { src: region.image, alt: region.title, className: "w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" }),
+                                    e('div', { className: "absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500" }),
+                                    e('div', { className: "absolute bottom-8 left-8 right-8" },
+                                        e('span', { className: "block font-mono text-[10px] text-accent tracking-[0.2em] mb-2 uppercase font-black" }, region.label),
+                                        e('h3', { className: "font-serif text-2xl text-sand italic font-bold leading-none" }, region.title)
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
 
-</script>
+                // Author Section
+                e('section', { id: "author", className: "py-24 px-6 md:px-12" },
+                    e('div', {
+                        onClick: () => window.open('https://www.amazon.com/Weight-Cloud-Other-Poems-ebook/dp/B0FXGLB1W7/', '_blank'),
+                        className: "max-w-6xl mx-auto bg-accent text-espresso rounded-[3rem] p-10 md:p-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center cursor-pointer hover:bg-accent/90 transition-all group"
+                    },
+                        e('div', null,
+                            e('span', { className: "inline-block bg-espresso text-sand px-6 py-2 rounded-full text-[10px] font-bold tracking-[0.2em] mb-8 uppercase" }, 'Published Collection'),
+                            e('h2', { className: "font-serif text-5xl md:text-7xl font-black leading-none mb-8 group-hover:italic transition-all uppercase" }, 'The Weight of a Cloud'),
+                            e('p', { className: "text-xl md:text-2xl font-medium leading-relaxed opacity-80 mb-10" }, 'My debut poetry collection. An exploration of home, identity, and the ephemeral moments in between.'),
+                            e('div', { className: "flex items-center gap-3 font-bold border-b-2 border-espresso/20 pb-2 w-fit group-hover:gap-5 transition-all" },
+                                e('span', null, 'AVAILABLE ON AMAZON'),
+                                e(ExternalLink, { size: 18 })
+                            )
+                        ),
+                        e('div', { className: "flex justify-center" },
+                            e('img', { src: "https://m.media-amazon.com/images/I/81LFuBnVh6L._SL1500_.jpg", alt: "The Weight of a Cloud", className: "w-full max-w-sm rounded-lg shadow-2xl transition-transform group-hover:scale-105" })
+                        )
+                    )
+                ),
+
+                // Writing Section
+                e('section', { id: "writing", className: "py-24 px-6" },
+                    e('div', { className: "max-w-7xl mx-auto text-center" },
+                        e('h2', { className: "font-serif text-5xl md:text-6xl mb-16" }, 'Publications'),
+                        e('div', { className: "grid grid-cols-1 md:grid-cols-3 gap-10 text-left" },
+                            publications.map(work =>
+                                e('div', {
+                                    key: work.title,
+                                    onClick: () => window.open(work.href, '_blank'),
+                                    className: "bg-sand/5 dark:bg-white/5 border border-accent/10 rounded-[2.5rem] p-6 cursor-pointer hover:-translate-y-4 transition-all group shadow-lg"
+                                },
+                                    work.ny && e('div', { className: "inline-block bg-neon text-espresso text-[10px] font-black px-4 py-1 rounded-sm -rotate-2 mb-6 group-hover:rotate-0 transition-transform" }, 'NEW YORK TIMES'),
+                                    e('div', { className: "aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-8" },
+                                        e('img', { src: work.image, alt: work.title, className: "w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" })
+                                    ),
+                                    e('span', { className: "block font-mono text-[10px] uppercase tracking-widest text-accent mb-2 font-bold" }, work.outlet),
+                                    e('h3', { className: "font-serif text-2xl group-hover:text-accent transition-colors" }, work.title)
+                                )
+                            )
+                        )
+                    )
+                ),
+
+                // Notebook Section
+                e('section', { id: "notebook", className: "py-24 px-6 bg-sand/5 dark:bg-white/5" },
+                    e('div', { className: "max-w-4xl mx-auto space-y-24" },
+                        e('div', { className: "text-center mb-16" },
+                            e('h2', { className: "font-serif text-5xl md:text-6xl mb-4" }, 'The Unscripted Lab'),
+                            e('p', { className: "font-mono text-xs opacity-50 uppercase tracking-widest" }, 'Reflections & Notes')
+                        ),
+                        notes.map(note =>
+                            e('div', { key: note.title, className: "relative pl-12 border-l-4 border-neon" },
+                                e('h3', { className: "font-serif text-3xl italic text-accent mb-4" }, note.title),
+                                e('p', { className: "font-mono text-lg opacity-80" }, note.text)
+                            )
+                        )
+                    )
+                ),
+
+                // Media Section
+                e('section', { id: "interests", className: "py-24 px-6" },
+                    e('div', { className: "max-w-7xl mx-auto" },
+                        e('div', { className: "text-center mb-16" },
+                            e('h2', { className: "font-serif text-5xl md:text-6xl mb-4" }, 'Sound & Vision')
+                        ),
+                        e('div', { className: "grid grid-cols-1 md:grid-cols-2 gap-10" },
+                            mediaItems.map(item =>
+                                e('div', {
+                                    key: item.title,
+                                    onClick: () => window.open(item.href, '_blank'),
+                                    className: "relative aspect-video rounded-[3rem] overflow-hidden group cursor-pointer shadow-xl"
+                                },
+                                    e('img', { src: item.image, alt: item.title, className: "w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" }),
+                                    e('div', { className: "absolute inset-0 bg-espresso/40 group-hover:bg-espresso/20 transition-colors" }),
+                                    e('div', { className: "absolute inset-0 flex flex-col items-center justify-center text-sand" },
+                                        e('span', { className: "font-mono text-[10px] uppercase tracking-[0.3em] mb-2 opacity-80" }, item.label),
+                                        e('h3', { className: "font-serif text-4xl italic" }, item.title)
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+
+                // Sign Off Section
+                e('section', { className: "h-[80vh] flex flex-col items-center justify-center text-center px-6" },
+                    e('blockquote', { className: "font-serif italic text-3xl md:text-5xl lg:text-6xl max-w-5xl leading-tight" },
+                        '"There is no passion to be found playing small – in settling for a life that is less than the one you are capable of living."'
+                    ),
+                    e('p', { className: "mt-8 font-extrabold tracking-widest text-accent text-lg uppercase tracking-[0.3em]" }, '— NELSON MANDELA')
+                ),
+
+                // Footer
+                e('footer', { className: "relative bg-accent text-espresso py-24 px-6 md:px-12 overflow-hidden" },
+                    e('div', { className: "absolute bottom-[-10%] left-[-5%] text-[15rem] font-black opacity-[0.03] select-none pointer-events-none" }, '2027'),
+                    e('div', { className: "max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16 relative z-10" },
+                        e('div', null,
+                            e('h2', { className: "font-serif text-5xl md:text-6xl font-black leading-[0.9] tracking-tighter mb-8 italic" },
+                                'ADITYA', e('br'), 'NEIL', e('br'), 'BANERJEE'
+                            ),
+                            e('p', { className: "font-bold text-lg" }, 'Class of 2027 // v4.0')
+                        ),
+                        e('div', null,
+                            e('h3', { className: "font-mono text-sm uppercase tracking-widest mb-6 opacity-60" }, 'Contact'),
+                            e('a', { href: "mailto:me@aditya.pt", className: "inline-block border-2 border-espresso px-8 py-3 rounded-full font-black hover:bg-espresso hover:text-sand transition-all" }, 'me@aditya.pt')
+                        ),
+                        e('div', { className: "p-8 bg-espresso/5 rounded-3xl border border-espresso/10" },
+                            e('h4', { className: "font-mono text-[10px] font-black uppercase mb-4" }, 'LGPD / GDPR COMPLIANT'),
+                            e('p', { className: "font-mono text-[10px] opacity-70" }, 'No cookies, no tracking. All rights reserved © 2008-2027.')
+                        )
+                    )
+                ),
+
+                // Modal
+                modalContent && e('div', { className: "fixed inset-0 z-[100] bg-espresso overflow-y-auto px-6 py-24 animate-fade-in flex items-center justify-center" },
+                    e('button', {
+                        onClick: () => setModalContent(null),
+                        className: "fixed top-8 right-8 text-accent flex items-center gap-2 font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform"
+                    },
+                        e(X, { size: 20 }),
+                        e('span', null, 'Close')
+                    ),
+                    e('div', { className: "max-w-3xl mx-auto text-sand" },
+                        e('h2', { className: "font-serif text-6xl italic text-accent mb-12" }, modalContent.title),
+                        e('p', { className: "text-xl md:text-3xl font-light leading-relaxed" }, modalContent.body)
+                    )
+                ),
+
+                // Cookie Banner
+                e('div', { id: "cookie-banner", className: "fixed bottom-8 left-8 right-8 z-[100] md:left-auto md:w-auto" },
+                    e('div', { className: "bg-espresso dark:bg-sand text-sand dark:text-espresso p-4 md:px-8 md:py-4 rounded-full border border-neon flex flex-col md:flex-row items-center gap-4 shadow-2xl" },
+                        e('span', { className: "text-sm font-medium" }, '🛡️ Aditya places Privacy First. This site uses zero cookies.'),
+                        e('button', {
+                            onClick: () => {
+                                const banner = document.getElementById('cookie-banner');
+                                if (banner) banner.style.display = 'none';
+                            },
+                            className: "bg-neon text-espresso px-6 py-2 rounded-full font-black text-xs hover:scale-105 transition-transform"
+                        }, 'UNDERSTOOD')
+                    )
+                )
+            );
+        };
+
+        const container = document.getElementById('root');
+        if (container) {
+            const root = ReactDOM.createRoot(container);
+            root.render(e(App));
+        }
+    </script>
 </body>
 </html>
