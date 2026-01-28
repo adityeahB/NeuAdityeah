@@ -34,7 +34,6 @@
 
   <style>
     body { scroll-behavior: smooth; transition: background-color .4s,color .4s; }
-
     .bg-nautilus {
       position: fixed;
       inset: 0;
@@ -44,22 +43,15 @@
       background-position: center;
       filter: grayscale(.5);
     }
-
     .dark .bg-nautilus {
       filter: grayscale(.8) brightness(.6);
     }
   </style>
 
-  <!-- React via CDN -->
-  <script type="importmap">
-  {
-    "imports": {
-      "react": "https://esm.sh/react@19",
-      "react-dom/client": "https://esm.sh/react-dom@19/client",
-      "lucide-react": "https://esm.sh/lucide-react@0.563.0"
-    }
-  }
-  </script>
+  <!-- React, ReactDOM, Lucide UMD CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/react@19/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@19/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.563.0/dist/lucide.umd.js"></script>
 </head>
 
 <body class="bg-sand text-espresso dark:bg-espresso dark:text-sand font-sans overflow-x-hidden">
@@ -68,6 +60,7 @@
 
   <div id="root"></div>
 
-  <script type="module" src="./index.js"></script>
+  <!-- Load App -->
+  <script src="./index.js"></script>
 </body>
 </html>
